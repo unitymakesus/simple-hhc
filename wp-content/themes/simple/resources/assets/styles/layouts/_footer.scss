@@ -1,0 +1,15 @@
+.footer-copyright {
+  @media #{$small-and-down} {
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 2em;
+
+    .flex, .copyright, .unity-link {
+      display: block;
+    }
+
+    .unity-link {
+      margin: 5px auto;
+    }
+  }
+}

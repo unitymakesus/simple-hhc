@@ -1,0 +1,94 @@
+.social-icons {
+  text-align: right;
+  line-height: 1em;
+  padding: 10px 0;
+
+  li {
+    padding: 0 0 0 6px;
+    display: inline-block;
+    float: none;
+
+    a {
+      display: block;
+      position: relative;
+      height: 50px;
+      width: 50px;
+      padding: 0;
+      overflow: hidden;
+      text-align: left;
+      text-indent: -100em;
+      // background: $color-teal;
+      // border: 2px solid $color-teal;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        width: 26px;
+        height: 26px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        transition: all 0.3s;
+      }
+
+      &:hover, &:active, &:focus {
+        // background: lighten($color-teal, 10%);
+        // border-color: $color-teal;
+
+        @extend .z-depth-2;
+      }
+    }
+
+    &.icon-facebook a::before {
+      background-image: url('../images/icon-facebook.svg');
+    }
+
+    &.icon-linkedin a::before {
+      background-image: url('../images/icon-linkedin.svg');
+    }
+
+    &.icon-twitter a::before {
+      background-image: url('../images/icon-twitter.svg');
+    }
+
+    &.icon-youtube a::before {
+      background-image: url('../images/icon-youtube.svg');
+    }
+
+    html[data-contrast="true"] & {
+      &.icon-facebook a {
+        &:hover, &:focus {
+          &::before {
+            background-image: url('../images/icon-facebook-black.svg');
+          }
+        }
+      }
+
+      &.icon-linkedin a {
+        &:hover, &:focus {
+          &::before {
+            background-image: url('../images/icon-linkedin-black.svg');
+          }
+        }
+      }
+
+      &.icon-twitter a {
+        &:hover, &:focus {
+          &::before {
+            background-image: url('../images/icon-twitter-black.svg');
+          }
+        }
+      }
+
+      &.icon-youtube a {
+        &:hover, &:focus {
+          &::before {
+            background-image: url('../images/icon-youtube-black.svg');
+          }
+        }
+      }
+    }
+  }
+}

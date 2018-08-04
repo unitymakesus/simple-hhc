@@ -68,3 +68,20 @@ add_filter('comments_template', function ($comments_template) {
     );
     return template_path(locate_template(["views/{$comments_template}", $comments_template]) ?: $comments_template);
 }, 100);
+
+/**
+ * Setup sidebar
+ */
+add_filter('sage/display_sidebar', function ($display) {
+  static $display;
+
+  isset($display) || $display = in_array(true, [
+    // The sidebar will be displayed if any of the following return true
+    // is_singular('post'),
+    is_home(),
+    is_date(),
+    is_category()
+  ]);
+
+  return $display;
+});

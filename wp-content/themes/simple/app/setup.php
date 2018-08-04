@@ -13,6 +13,9 @@ use Roots\Sage\Template\BladeProvider;
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
     wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
+
+    // Set array of theme customizations for JS
+    wp_localize_script( 'sage/main.js', 'simple_options', array('fonts' => get_theme_mod('themefonts'), 'colors' => get_theme_mod('themecolor')) );
 }, 100);
 
 /**
@@ -27,7 +30,7 @@ add_action('after_setup_theme', function () {
     add_theme_support('soil-jquery-cdn');
     add_theme_support('soil-nav-walker');
     add_theme_support('soil-nice-search');
-    add_theme_support('soil-relative-urls');
+    // add_theme_support('soil-relative-urls');
 
     /**
      * Enable plugins to manage the document title
@@ -40,7 +43,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
+        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'social_links' => __('Social Links', 'sage')
     ]);
 
     /**
@@ -56,16 +60,67 @@ add_action('after_setup_theme', function () {
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
     /**
+    * Add support for Gutenberg.
+    *
+    * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
+    */
+    add_theme_support( 'gutenberg', array(
+        // Theme supports wide images, galleries and videos.
+        'wide-images' => true,
+        // Make specific theme colors available in the editor.
+        // 'colors' => array(
+        //     '#ffffff',
+        //     '#000000',
+        //     '#cccccc',
+        // ),
+    ) );
+
+    /**
      * Enable selective refresh for widgets in customizer
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
 
     /**
+     * Add image quality
+     */
+    add_filter('jpeg_quality', function($arg){return 100;});
+
+    /**
+     * Enable logo uploader in customizer
+     */
+    add_image_size('simple-logo', 200, 200, false);
+    add_image_size('simple-logo-2x', 400, 400, false);
+    add_theme_support('custom-logo', array(
+      'size' => 'simple-logo-2x'
+    ));
+
+    /**
+     * Add image sizes
+     */
+    add_image_size('tiny-thumbnail', 80, 80, true);
+    add_image_size('small-thumbnail', 150, 150, true);
+
+    add_filter( 'image_size_names_choose', function( $sizes ) {
+      return array_merge( $sizes, array(
+        'tiny-thumbnail' => __( 'Tiny Thumbnail' ),
+        'small-thumbnail' => __( 'Small Thumbnail' ),
+      ) );
+    } );
+
+    /**
      * Use main stylesheet for visual editor
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
     add_editor_style(asset_path('styles/main.css'));
+
+    /**
+     * Enqueue editor styles for Gutenberg
+     */
+    function simple_editor_styles() {
+      wp_enqueue_style( 'simple-gutenberg-style', asset_path('styles/main.css') );
+    }
+    add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\simple_editor_styles' );
 }, 20);
 
 /**
@@ -124,5 +179,12 @@ add_action('after_setup_theme', function () {
      */
     sage('blade')->compiler()->directive('asset', function ($asset) {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
+    });
+
+    /**
+     * Configure SVG location for @svg() Blade directive
+     */
+    add_filter('bladesvg_image_path', function () {
+      return \BladeSvgSage\get_dist_path('images');
     });
 });

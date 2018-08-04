@@ -4,34 +4,50 @@
  */
 
 /** Media alignment */
-.alignnone {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 100%;
-  height: auto;
-}
+// .alignnone {
+//   margin-left: 0;
+//   margin-right: 0;
+//   max-width: 100%;
+//   height: auto;
+// }
+//
+// .aligncenter {
+//   display: block;
+//   margin: ($spacer / 2) auto;
+//   height: auto;
+// }
+//
+// .alignleft,
+// .alignright {
+//   margin-bottom: ($spacer / 2);
+//   height: auto;
+// }
+//
+// @media (min-width: 30rem) {
+//   .alignleft {
+//     float: left;
+//     margin-right: ($spacer / 2);
+//   }
+//
+//   .alignright {
+//     float: right;
+//     margin-left: ($spacer / 2);
+//   }
+// }
 
-.aligncenter {
-  display: block;
-  margin: ($spacer / 2) auto;
-  height: auto;
-}
+.entry-content-asset {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 
-.alignleft,
-.alignright {
-  margin-bottom: ($spacer / 2);
-  height: auto;
-}
-
-@media (min-width: 30rem) {
-  .alignleft {
-    float: left;
-    margin-right: ($spacer / 2);
-  }
-
-  .alignright {
-    float: right;
-    margin-left: ($spacer / 2);
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -40,17 +56,3 @@
 // TODO: .wp-caption {}
 // TODO: .wp-caption img {}
 // TODO: .wp-caption-text {}
-
-/** Text meant only for screen readers */
-.screen-reader-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-  color: #000;
-  background: #fff;
-}

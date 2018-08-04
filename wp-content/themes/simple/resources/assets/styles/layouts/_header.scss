@@ -1,2 +1,160 @@
-// TODO: .banner .nav li {}
-// TODO: .banner .nav a {}
+.banner {
+  position: relative;
+
+  nav {
+    background: none;
+    color: $color-black;
+    height: auto;
+
+    & > .container > .row {
+      &::after {
+        display: none;
+      }
+
+      @media #{$small-and-down} {
+        flex-wrap: nowrap;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .logo {
+    max-width: 300px;
+    padding: 10px 15px;
+    display: block;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+
+    @media #{$medium-and-down} {
+      padding-left: 0;
+      min-height: 120px;
+      display: flex;
+
+      img {
+        align-self: center;
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  .utility {
+    padding: 10px 20px;
+    text-align: right;
+
+    .btn {
+      height: auto;
+    }
+
+    @media #{$medium-and-down} {
+      padding: 10px 0;
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  .navbar {
+    // background: $color-teal-dark;
+    margin-bottom: 0;
+  }
+
+  .menu-trigger-wrapper {
+    position: relative;
+
+    input:focus + label {
+      outline: $color-grey-dark auto 5px;
+    }
+
+    label {
+      display: block;
+      text-decoration: none;
+      height: 50px;
+      width: 50px;
+      text-align: center;
+      color: $color-black;
+
+      i {
+        font-size: 2em;
+        line-height: 1.5em;
+      }
+
+      &:hover {
+        // color: $color-green;
+      }
+
+      html[data-contrast="true"] & {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+nav {
+  ul {
+    a {
+      text-decoration: none;
+      font-weight: normal;
+      padding: 1rem 15px;
+    }
+  }
+}
+
+.navbar-menu {
+  // width: 100%;
+  border: none;
+  margin: 0 auto;
+  box-shadow: none;
+
+  li {
+    &.current-page-ancestor, &.current-menu-item, &.active {
+      // background: $color-teal;
+    }
+
+    &:hover, &:focus, &.hover {
+      // background: $color-teal;
+
+      & > a {
+        color: $color-white;
+        text-decoration: underline;
+      }
+    }
+
+    a {
+      background: none !important;
+    }
+  }
+
+  @media #{$medium-only} {
+    height: em-calc(84px);
+
+    li {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      a {
+        font-size: 0.9em;
+      }
+    }
+  }
+  @media #{$small-and-down} {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0;
+    width: 100%;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+
+    li {
+      width: 100%;
+    }
+
+    .mobilenav-active & {
+      max-height: 30em;
+    }
+  }
+}
