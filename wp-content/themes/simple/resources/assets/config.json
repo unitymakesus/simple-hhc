@@ -6,6 +6,9 @@
     ],
     "customizer": [
       "./scripts/customizer.js"
+    ],
+    "customizer-panel": [
+      "./scripts/customizer-panel.js"
     ]
   },
   "publicPath": "/wp-content/themes/simple",

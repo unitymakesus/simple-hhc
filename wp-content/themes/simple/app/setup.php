@@ -15,7 +15,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
 
     // Set array of theme customizations for JS
-    wp_localize_script( 'sage/main.js', 'simple_options', array('fonts' => get_theme_mod('themefonts'), 'colors' => get_theme_mod('themecolor')) );
+    wp_localize_script( 'sage/main.js', 'simple_options', array('fonts' => get_theme_mod('theme_fonts'), 'colors' => get_theme_mod('theme_color')) );
 }, 100);
 
 /**

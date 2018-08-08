@@ -2,12 +2,12 @@
 @php
   $text_size = $_COOKIE['data_text_size'];
   $contrast = $_COOKIE['data_contrast'];
-  $simple_fonts = get_theme_mod('themefonts');
-  $simple_color = get_theme_mod('themecolor');
+  $simple_fonts = get_theme_mod('theme_fonts');
+  $simple_color = get_theme_mod('theme_color');
 @endphp
 <html {!! language_attributes() !!} data-text-size="{{ $text_size }}" data-contrast="{{ $contrast }}">
   @include('partials.head')
-  <body {!! body_class() !!} data-font="{{ $simple_fonts }} data-color="{{ $simple_color }}">
+  <body {!! body_class() !!} data-font="{{ $simple_fonts }}" data-color="{{ $simple_color }}">
     @if (!is_user_logged_in())
       <!-- Google Tag Manager (noscript) -->
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZPJJVP"
