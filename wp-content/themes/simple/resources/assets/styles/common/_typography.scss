@@ -14,135 +14,46 @@ html {
   }
 }
 
+$body-fonts-list: $font-source-sans-pro, $font-arimo, $font-crimson-text, $font-open-sans, $font-libre-baskerville, $font-muli;
+$body-fonts-fallback-list: "sans-serif", "sans-serif", "serif", "sans-serif", "serif", "sans-serif";
+$header-fonts-list: $font-bitter, $font-didact-gothic, $font-fjalla-one, $font-dancing-script, $font-open-sans, $font-ovo;
+$header-fonts-fallback-list: "serif", "sans-serif", "sans-serif", "cursive", "sans-serif", "serif";
+
 body {
-  &[data-font="1"] {
-    font-family: $font-source-sans-pro, sans-serif;
+  @for $i from 1 through length($body-fonts-list) {
+    &[data-font="#{$i}"] {
+      font-family: nth($body-fonts-list, $i), nth($body-fonts-fallback-list, $i);
 
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-      font-family: $font-bitter, serif;
-    }
-  }
-
-  &[data-font="2"] {
-    font-family: $font-arimo, sans-serif;
-
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-      font-family: $font-didact-gothic, sans-serif;
-    }
-  }
-
-  &[data-font="3"] {
-    font-family: $font-crimson-text, serif;
-
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-      font-family: $font-fjalla-one, sans-serif;
-    }
-  }
-
-  &[data-font="4"] {
-    font-family: $font-open-sans, sans-serif;
-
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-      font-family: $font-dancing-script, cursive;
-    }
-  }
-
-  &[data-font="5"] {
-    font-family: $font-libre-baskerville, serif;
-
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-      font-family: $font-open-sans, sans-serif;
-    }
-  }
-
-  &[data-font="6"] {
-    font-family: $font-muli, sans-serif;
-
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-      font-family: $font-ovo, serif;
-    }
-  }
-}
-
-h1, .h1 {
-  // font-family: $font-serif;
-  font-size: rem-calc(45px);
-  font-weight: 600;
-  // color: $color-teal-dark;
-
-  // .home & {
-  //   font-size: rem-calc(65px);
-  //
-  //   // Flexible sizing on medium
-  //   $i: 0;
-  //
-  //   @while $i <= $intervals {
-  //     @media only screen and (min-width: 670 + ($i * $interval-size)) {
-  //       font-size: 2.5rem * (1 + (0.02 * $i));
-  //     }
-  //     $i: $i + 1;
-  //   }
-  //
-  //   @media #{$small-and-down} {
-  //     font-size: rem-calc(55px);
-  //     text-align: center;
-  //   }
-  //   @media #{$xsmall-and-down} {
-  //     font-size: rem-calc(40px);
-  //
-  //     html[data-text-size="large"] & {
-  //       font-size: rem-calc(40px);
-  //     }
-  //
-  //     html[data-text-size="medium"] & {
-  //       font-size: rem-calc(36px);
-  //     }
-  //   }
-  // }
-}
-
-h2, .h2 {
-  // font-family: $font-serif;
-  font-size: rem-calc(36px);
-  font-weight: 600;
-  // color: $color-purple;
-
-  .home & {
-    font-size: rem-calc(40px);
-
-    &[id="news-title"] {
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-
-    @media #{$medium-and-down} {
-      font-size: rem-calc(36px);
-    }
-    @media #{$xsmall-and-down} {
-      html[data-text-size="large"] & {
-        font-size: rem-calc(30px);
+      h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, blockquote {
+        font-family: nth($header-fonts-list, $i), nth($header-fonts-fallback-list, $i);
       }
     }
   }
 }
 
+h1, .h1 {
+  font-size: rem-calc(45px);
+  font-weight: 600;
+}
+
+h2, .h2 {
+  font-size: rem-calc(36px);
+  font-weight: 600;
+}
+
 h3, .h3 {
-  // font-family: $font-serif;
   font-size: rem-calc(24px);
   font-weight: 600;
-  // color: $color-teal-dark;
   letter-spacing: 1px;
-
-  &.entry-title {
-    // font-family: $font-sans;
-    font-weight: bold;
-  }
 }
 
 h4, .h4 {
-  // font-family: $font-sans;
   font-size: rem-calc(24px);
-  // color: $color-purple;
+}
+
+h5, .h5 {
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 a {
@@ -202,8 +113,12 @@ a {
 }
 
 blockquote {
-  html[data-contrast="true"] & {
-    border-color: $color-grey-light;
+  border-left: 0;
+
+  &.wp-block-pullquote {
+    clear: both;
+    padding-left: 3em;
+    padding-right: 3em;
   }
 }
 

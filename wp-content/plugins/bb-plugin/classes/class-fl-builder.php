@@ -62,7 +62,7 @@ final class FLBuilder {
 	 * @since 2.1
 	 */
 	static public $fa4_url = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
-	static public $fa5_url = 'https://use.fontawesome.com/releases/v5.0.12/css/all.css';
+	static public $fa5_pro_url = 'https://pro.fontawesome.com/releases/v5.2.0/css/all.css';
 
 	/**
 	 * Initializes hooks.
@@ -209,11 +209,11 @@ final class FLBuilder {
 	static public function get_wp_editor() {
 		ob_start();
 
-		wp_editor( '{FL_EDITOR_CONTENT}', 'flbuildereditor', array(
+		wp_editor( '{FL_EDITOR_CONTENT}', 'flbuildereditor', apply_filters( 'fl_get_wp_editor_args', array(
 			'media_buttons' => true,
 			'wpautop'       => true,
 			'textarea_rows' => 16,
-		) );
+		) ) );
 
 		return ob_get_clean();
 	}
@@ -377,8 +377,6 @@ final class FLBuilder {
 		$js_url  = plugins_url( '/js/', FL_BUILDER_FILE );
 		$min     = ( self::is_debug() ) ? '' : '.min';
 
-		$fa5_url = ( apply_filters( 'fl_enable_fa5_pro', false ) ) ? str_replace( 'use', 'pro', self::$fa5_url ) : self::$fa5_url;
-
 		// Register additional CSS
 		wp_register_style( 'fl-slideshow',           $css_url . 'fl-slideshow.css', array( 'yui3' ), $ver );
 		wp_register_style( 'jquery-bxslider',        $css_url . 'jquery.bxslider.css', array(), $ver );
@@ -387,7 +385,7 @@ final class FLBuilder {
 
 		// Register icon CDN CSS
 		wp_register_style( 'font-awesome',           self::$fa4_url, array(), $ver );
-		wp_register_style( 'font-awesome-5',         $fa5_url, array(), $ver );
+		wp_register_style( 'font-awesome-5',         self::get_fa5_url(), array(), $ver );
 		wp_register_style( 'foundation-icons',       'https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css', array(), $ver );
 
 		// Register additional JS
@@ -420,9 +418,10 @@ final class FLBuilder {
 		global $post;
 
 		$original_post = $post;
+		$is_archive = is_archive() || is_home() || is_search();
 
 		// Enqueue assets for posts in the main query.
-		if ( isset( $wp_query->posts ) ) {
+		if ( ! $is_archive && isset( $wp_query->posts ) ) {
 			foreach ( $wp_query->posts as $post ) {
 				self::enqueue_layout_styles_scripts();
 			}
@@ -501,7 +500,7 @@ final class FLBuilder {
 			}
 
 			// Enqueue Google Fonts
-			FLBuilderFonts::enqueue_styles();
+			FLBuilderFonts::enqueue_google_fonts();
 
 			// Enqueue layout CSS
 			self::enqueue_layout_cached_asset( 'css', $rerender );
@@ -541,6 +540,11 @@ final class FLBuilder {
 		$active		= FLBuilderModel::is_builder_active();
 		$preview	= FLBuilderModel::is_builder_draft_preview();
 		$handle		= 'fl-builder-layout-' . $post_id;
+		/**
+		 * Use this filter to add dependencies to the dependency array when the main builder layout CSS file is enqueued using wp_enqueue_style.
+		 * @see fl_builder_layout_style_dependencies
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		$css_deps 	= apply_filters( 'fl_builder_layout_style_dependencies', array() );
 		$css_media 	= apply_filters( 'fl_builder_layout_style_media', 'all' );
 
@@ -1519,6 +1523,9 @@ final class FLBuilder {
 			// Set the post rendering ID.
 			self::$post_rendering = $post_id;
 
+			// Try to enqueue here in case it didn't happen in the head for this layout.
+			self::enqueue_layout_styles_scripts();
+
 			// Render the content.
 			ob_start();
 			self::render_content_by_id( $post_id );
@@ -1793,20 +1800,28 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function render_row( $row ) {
+		global $wp_the_query;
+
 		$groups = FLBuilderModel::get_nodes( 'column-group', $row );
+		$post_id = FLBuilderModel::get_post_id();
+		$active	= FLBuilderModel::is_builder_active() && $post_id == $wp_the_query->post->ID;
+		$visible = FLBuilderModel::is_node_visible( $row );
 
-		do_action( 'fl_builder_before_render_row', $row, $groups );
+		if ( $active || $visible ) {
 
-		$template_file = self::locate_template_file(
-			apply_filters( 'fl_builder_row_template_base', 'row', $row ),
-			apply_filters( 'fl_builder_row_template_slug', '', $row )
-		);
+			do_action( 'fl_builder_before_render_row', $row, $groups );
 
-		if ( $template_file && FLBuilderModel::is_node_visible( $row ) ) {
-			include $template_file;
+			$template_file = self::locate_template_file(
+				apply_filters( 'fl_builder_row_template_base', 'row', $row ),
+				apply_filters( 'fl_builder_row_template_slug', '', $row )
+			);
+
+			if ( $template_file ) {
+				include $template_file;
+			}
+
+			do_action( 'fl_builder_after_render_row', $row, $groups );
 		}
-
-		do_action( 'fl_builder_after_render_row', $row, $groups );
 	}
 
 	/**
@@ -1817,8 +1832,16 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function render_row_attributes( $row ) {
+		/**
+		 * Use this filter to work with the custom class a user adds to a row under Row Settings > Advanced > Class.
+		 * @see fl_builder_row_custom_class
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		$custom_class = apply_filters( 'fl_builder_row_custom_class', $row->settings->class, $row );
 		$overlay_bgs  = array( 'photo', 'parallax', 'slideshow', 'video' );
+		$active		  = FLBuilderModel::is_builder_active();
+		$visible 	  = FLBuilderModel::is_node_visible( $row );
+		$has_rules 	  = FLBuilderModel::node_has_visibility_rules( $row );
 		$attrs        = array(
 			'id'          => $row->settings->id,
 			'class'       => array(
@@ -1847,6 +1870,12 @@ final class FLBuilder {
 		}
 		if ( ! empty( $custom_class ) ) {
 			$attrs['class'][] = trim( esc_attr( $custom_class ) );
+		}
+		if ( $active && ! $visible ) {
+			$attrs['class'][] = 'fl-node-hidden';
+		}
+		if ( $active && $has_rules ) {
+			$attrs['class'][] = 'fl-node-has-rules';
 		}
 
 		// Data
@@ -1983,9 +2012,14 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function render_column( $col_id = null ) {
-		$col = is_object( $col_id ) ? $col_id : FLBuilderModel::get_node( $col_id );
+		global $wp_the_query;
 
-		if ( FLBuilderModel::is_node_visible( $col ) ) {
+		$col = is_object( $col_id ) ? $col_id : FLBuilderModel::get_node( $col_id );
+		$post_id = FLBuilderModel::get_post_id();
+		$active	= FLBuilderModel::is_builder_active() && $post_id == $wp_the_query->post->ID;
+		$visible = FLBuilderModel::is_node_visible( $col );
+
+		if ( $active || $visible ) {
 			include FL_BUILDER_DIR . 'includes/column.php';
 		}
 	}
@@ -1998,9 +2032,17 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function render_column_attributes( $col ) {
+		/**
+		 * Use this filter to work with the custom class a user adds to a column under Column Settings > Advanced > Class.
+		 * @see fl_builder_column_custom_class
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		$custom_class = apply_filters( 'fl_builder_column_custom_class', $col->settings->class, $col );
 		$overlay_bgs  = array( 'photo' );
 		$nested       = FLBuilderModel::get_nodes( 'column-group', $col );
+		$active		  = FLBuilderModel::is_builder_active();
+		$visible 	  = FLBuilderModel::is_node_visible( $col );
+		$has_rules 	  = FLBuilderModel::node_has_visibility_rules( $col );
 		$attrs        = array(
 			'id'          => $col->settings->id,
 			'class'       => array(
@@ -2027,9 +2069,15 @@ final class FLBuilder {
 		if ( ! empty( $custom_class ) ) {
 			$attrs['class'][] = trim( esc_attr( $custom_class ) );
 		}
+		if ( $active && ! $visible ) {
+			$attrs['class'][] = 'fl-node-hidden';
+		}
+		if ( $active && $has_rules ) {
+			$attrs['class'][] = 'fl-node-has-rules';
+		}
 
 		// Style
-		if ( FLBuilderModel::is_builder_active() ) {
+		if ( $active ) {
 			$attrs['style'][] = 'width: ' . $col->settings->size . '%;';
 		}
 
@@ -2069,22 +2117,30 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function render_module( $module_id = null ) {
+		global $wp_the_query;
+
 		$module 	= FLBuilderModel::get_module( $module_id );
 		$settings 	= $module->settings;
 		$id 		= $module->node;
+		$post_id 	= FLBuilderModel::get_post_id();
+		$active		= FLBuilderModel::is_builder_active() && $post_id == $wp_the_query->post->ID;
+		$visible 	= FLBuilderModel::is_node_visible( $module );
 
-		do_action( 'fl_builder_before_render_module', $module );
+		if ( $active || $visible ) {
 
-		$template_file = self::locate_template_file(
-			apply_filters( 'fl_builder_module_template_base', 'module', $module ),
-			apply_filters( 'fl_builder_module_template_slug', '',  $module )
-		);
+			do_action( 'fl_builder_before_render_module', $module );
 
-		if ( $template_file && FLBuilderModel::is_node_visible( $module ) ) {
-			include $template_file;
+			$template_file = self::locate_template_file(
+				apply_filters( 'fl_builder_module_template_base', 'module', $module ),
+				apply_filters( 'fl_builder_module_template_slug', '',  $module )
+			);
+
+			if ( $template_file ) {
+				include $template_file;
+			}
+
+			do_action( 'fl_builder_after_render_module', $module );
 		}
-
-		do_action( 'fl_builder_after_render_module', $module );
 	}
 
 	/**
@@ -2113,7 +2169,13 @@ final class FLBuilder {
 
 		do_action( 'fl_builder_render_module_html_before', $type, $settings, $module );
 
+		ob_start();
+
 		include apply_filters( 'fl_builder_render_module_html', $module->dir . 'includes/frontend.php', $type, $settings, $module );
+
+		$content = ob_get_clean();
+
+		echo apply_filters( 'fl_builder_render_module_html_content', $content, $type, $settings, $module );
 
 		do_action( 'fl_builder_render_module_html_after', $type, $settings, $module );
 	}
@@ -2126,7 +2188,15 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function render_module_attributes( $module ) {
+		/**
+		 * Use this filter to work with the custom class a user adds to a module in the Class field on the Advanced tab.
+		 * @see fl_builder_module_custom_class
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		$custom_class = apply_filters( 'fl_builder_module_custom_class', $module->settings->class, $module );
+		$active		  = FLBuilderModel::is_builder_active();
+		$visible 	  = FLBuilderModel::is_node_visible( $module );
+		$has_rules 	  = FLBuilderModel::node_has_visibility_rules( $module );
 		$attrs        = array(
 			'id'          => esc_attr( $module->settings->id ),
 			'class'       => array(
@@ -2141,16 +2211,22 @@ final class FLBuilder {
 		if ( ! empty( $module->settings->responsive_display ) ) {
 			$attrs['class'][] = 'fl-visible-' . $module->settings->responsive_display;
 		}
-		if ( ! empty( $module->settings->animation ) ) {
+		if ( ! empty( $module->settings->animation ) && is_string( $module->settings->animation ) ) {
 			$attrs['class'][] = 'fl-animation fl-' . $module->settings->animation;
 			$attrs['data-animation-delay'][] = $module->settings->animation_delay;
 		}
 		if ( ! empty( $custom_class ) ) {
 			$attrs['class'][] = trim( esc_attr( $custom_class ) );
 		}
+		if ( $active && ! $visible ) {
+			$attrs['class'][] = 'fl-node-hidden';
+		}
+		if ( $active && $has_rules ) {
+			$attrs['class'][] = 'fl-node-has-rules';
+		}
 
 		// Data
-		if ( FLBuilderModel::is_builder_active() ) {
+		if ( $active ) {
 			$attrs['data-parent'] = $module->parent;
 			$attrs['data-type'] = $module->settings->type;
 			$attrs['data-name'] = $module->name;
@@ -2346,7 +2422,11 @@ final class FLBuilder {
 			$css .= FLBuilderModel::get_layout_settings()->css;
 		}
 
-		// Filter the CSS.
+		/**
+		 * Use this filter to modify the CSS that is compiled and cached for each builder layout.
+		 * @see fl_builder_render_css
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		$css = apply_filters( 'fl_builder_render_css', $css, $nodes, $global_settings, $include_global );
 
 		// Minify the CSS.
@@ -2776,7 +2856,11 @@ final class FLBuilder {
 			include FL_BUILDER_DIR . 'classes/class-fl-jsmin.php';
 		}
 
-		// Filter the JS.
+		/**
+		 * Use this filter to modify the JavaScript that is compiled and cached for each builder layout.
+		 * @see fl_builder_render_js
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		$js = apply_filters( 'fl_builder_render_js', $js, $nodes, $global_settings, $include_global );
 
 		// Only proceed if we have JS.
@@ -2788,7 +2872,7 @@ final class FLBuilder {
 					$min = FLJSMin::minify( $js );
 				} catch ( Exception $e ) {}
 
-				if ( $min ) {
+				if ( isset( $min ) ) {
 					$js = $min;
 				}
 			}
@@ -3044,6 +3128,15 @@ final class FLBuilder {
 		}
 
 		return apply_filters( 'fl_is_debug', $debug );
+	}
+
+	/**
+	 * Get the fa5 url.
+	 * @since 2.2
+	 * @return string url
+	 */
+	static public function get_fa5_url() {
+		return ( apply_filters( 'fl_enable_fa5_pro', false ) ) ? self::$fa5_pro_url : plugins_url( '/fonts/fontawesome/css/all.min.css', FL_BUILDER_FILE );
 	}
 
 	/**

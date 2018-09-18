@@ -28,7 +28,7 @@ class AdminPageFiles extends AdminPage {
 
         $this->slug = 'security-safe-files';
         $this->title = 'Files & Folders';
-        $this->description = 'It is important to keep all files updated and ensure only authorized users have access to them.';
+        $this->description = 'It is essential to keep all files updated and ensure only authorized users can access them.';
 
         $this->tabs[] = array(
             'id' => 'settings',
@@ -43,8 +43,8 @@ class AdminPageFiles extends AdminPage {
             'id' => 'core',
             'label' => 'Core',
             'title' => 'WordPress Base Directory & Files',
-            'heading' => 'Check to make sure all file permissions set properly.',
-            'intro' => 'Incorrect directory or file permission values can lead to security vulnerabilities or even plugins or themes not functioning properly. If you are not sure what permissions value to set a file or directory to, use the standard recommended value provided. ',
+            'heading' => 'Check to make sure all file permissions set correctly.',
+            'intro' => 'Incorrect directory or file permission values can lead to security vulnerabilities or even plugins or themes not functioning as intended. If you are not sure what values to set for a file or directory, use the standard recommended value.',
             'classes' => array( 'full' ),
             'content_callback' => 'tab_core',
         );
@@ -53,7 +53,7 @@ class AdminPageFiles extends AdminPage {
             'id' => 'theme',
             'label' => 'Theme',
             'title' => 'Theme Audit',
-            'heading' => 'Check to make sure all theme file permissions set properly.',
+            'heading' => 'Check to make sure all theme file permissions set correctly.',
             'intro' => 'If you use "Secure" permission settings, and experience problems, just set the file permissions back to "Standard."',
             'classes' => array( 'full' ),
             'content_callback' => 'tab_theme',
@@ -159,7 +159,7 @@ class AdminPageFiles extends AdminPage {
         $html .= $this->form_section( 'File Access', false );
         $classes = '';
         $rows = $this->form_checkbox( $this->settings, 'Theme File Editing', 'DISALLOW_FILE_EDIT', 'Disable Theme Editing', 'Disable the ability for admin users to edit your theme files from the WordPress admin.', $classes, false );
-        $rows .= $this->form_checkbox( $this->settings, 'WordPress Version Files', 'version_files_core', 'Prevent Access', 'Prevent access to files that disclose WordPress versions: readme.html and license.txt. Also see <a href="admin.php?page=security-safe-privacy#software-privacy">Software Privacy</a>.', $classes, false );
+        $rows .= $this->form_checkbox( $this->settings, 'WordPress Version Files', 'version_files_core', 'Prevent Access', 'Prevent access to files that disclose WordPress versions: readme.html and license.txt. Also, see <a href="admin.php?page=security-safe-privacy#software-privacy">Software Privacy</a>.', $classes, false );
         
         if ( $this->is_pro() ) {
 
@@ -290,10 +290,10 @@ class AdminPageFiles extends AdminPage {
         //https://secure.php.net/ChangeLog-7.php
         //https://secure.php.net/ChangeLog-5.php
         $latest_versions['PHP'] = array( 
-            '7.2.0' => '7.2.7',
-            '7.1.0' => '7.1.19',
-            '7.0.0' => '7.0.30',
-            '5.6.0' => '5.6.36' );
+            '7.2.0' => '7.2.9',
+            '7.1.0' => '7.1.21',
+            '7.0.0' => '7.0.31',
+            '5.6.0' => '5.6.37' );
 
         $php_min = '5.6.0';
 

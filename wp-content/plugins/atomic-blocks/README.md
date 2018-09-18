@@ -74,6 +74,34 @@ Yes, you will need to install the [Gutenberg plugin](https://wordpress.org/plugi
 
 ## Changelog
 
+**1.3.4**
+* Convert Accordion Block text area to InnerBlocks to allow for adding any block.
+
+**1.3.3**
+* Update FontAwesome to 5.2.0.
+* Move dynamic block PHP to src folder.
+* Add option to customize Read More link text in Post Grid block.
+
+**1.3.2**
+* Fix category drop down on Post Grid block.
+* Fix path to fontawesome on Getting Started page.
+
+**1.3.1**
+* Fix bug in Post Grid block that prevented it from displaying in the editor.
+* Fix window.userSettings is undefined error.
+* Fix bug in dismissable notice.
+
+**1.3.0**
+* Fix padding increments on Container block.
+* Improve color display on Call To Action block text.
+
+**1.2.9**
+* Convert saved RichText to RichText.Content.
+* Prepare blocks for toolbar formatting.
+
+**1.2.8**
+* Fix focus bug on Testimonial block title.
+
 **1.2.7**
 * Fix the URLInput on the Button block. 
 

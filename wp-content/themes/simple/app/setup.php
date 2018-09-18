@@ -33,6 +33,14 @@ add_action('after_setup_theme', function () {
     // add_theme_support('soil-relative-urls');
 
     /**
+     * REMOVE WP EMOJI
+     */
+     remove_action('wp_head', 'print_emoji_detection_script', 7);
+     remove_action('wp_print_styles', 'print_emoji_styles');
+     remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+     remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+    /**
      * Enable plugins to manage the document title
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
      */
@@ -60,26 +68,33 @@ add_action('after_setup_theme', function () {
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
     /**
-    * Add support for Gutenberg.
-    *
-    * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
-    */
-    add_theme_support( 'gutenberg', array(
-        // Theme supports wide images, galleries and videos.
-        'wide-images' => true,
-        // Make specific theme colors available in the editor.
-        // 'colors' => array(
-        //     '#ffffff',
-        //     '#000000',
-        //     '#cccccc',
-        // ),
-    ) );
-
-    /**
      * Enable selective refresh for widgets in customizer
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Use main stylesheet for visual editor
+     * @see resources/assets/styles/layouts/_tinymce.scss
+     */
+    add_editor_style(asset_path('styles/main.css'));
+
+    /**
+    * Add support for Gutenberg.
+    *
+    * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
+    */
+    add_theme_support( 'align-wide' );
+    add_theme_support( 'disable-custom-colors' );
+    add_theme_support( 'wp-block-styles' );
+
+    /**
+     * Enqueue editor styles for Gutenberg
+     */
+    function simple_editor_styles() {
+      wp_enqueue_style( 'simple-gutenberg-style', asset_path('styles/main.css') );
+    }
+    // add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\simple_editor_styles' );
 
     /**
      * Add image quality
@@ -108,19 +123,6 @@ add_action('after_setup_theme', function () {
       ) );
     } );
 
-    /**
-     * Use main stylesheet for visual editor
-     * @see resources/assets/styles/layouts/_tinymce.scss
-     */
-    add_editor_style(asset_path('styles/main.css'));
-
-    /**
-     * Enqueue editor styles for Gutenberg
-     */
-    function simple_editor_styles() {
-      wp_enqueue_style( 'simple-gutenberg-style', asset_path('styles/main.css') );
-    }
-    add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\simple_editor_styles' );
 }, 20);
 
 /**
@@ -138,8 +140,16 @@ add_action('widgets_init', function () {
         'id'            => 'sidebar-primary'
     ] + $config);
     register_sidebar([
-        'name'          => __('Footer', 'sage'),
-        'id'            => 'sidebar-footer'
+        'name'          => __('Footer-Left', 'sage'),
+        'id'            => 'footer-left'
+    ] + $config);
+    register_sidebar([
+        'name'          => __('Footer-Center', 'sage'),
+        'id'            => 'footer-center'
+    ] + $config);
+    register_sidebar([
+        'name'          => __('Footer-Right', 'sage'),
+        'id'            => 'footer-right'
     ] + $config);
 });
 

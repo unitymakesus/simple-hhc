@@ -57,7 +57,7 @@ class AdminPageGeneral extends AdminPage {
         
             // Shutoff Switch - All Security Policies
             $classes = ( $this->settings['on'] ) ? '' : 'notice-warning';
-            $rows = $this->form_select( $this->settings, 'All Security Policies', 'on', array( '0' => 'Disabled', '1' => 'Enabled' ), 'If you experience a problem, you may want to temporarily turn off all security polocies at once to troubleshoot the issue. Each individual policy type can be temporarily disabled at the top of each page\'s settings tab.', $classes );
+            $rows = $this->form_select( $this->settings, 'All Security Policies', 'on', array( '0' => 'Disabled', '1' => 'Enabled' ), 'If you experience a problem, you may want to temporarily turn off all security policies at once to troubleshoot the issue. You can temporarily disable each type of policy at the top of each settings tab.', $classes );
             
             // Reset Settings
             $classes = '';

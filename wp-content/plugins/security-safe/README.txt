@@ -47,6 +47,14 @@ Features:
 
 == Changelog ==
 
+= 1.1.13 (Low Priority) =
+*Release Date - 17 August 2018*
+
+* Bug Fix: Individual policy disabled notice was visible when all notices were disabled.
+* Added Feature: Clear PHP Cache Before Updates
+* Improvement: Updated descriptions of features in settings.
+* Improvement: Updated PHP version checks.
+
 = 1.1.12 (Low Priority) =
 *Release Date - 4 July 2018*
 

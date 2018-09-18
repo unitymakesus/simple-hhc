@@ -5,8 +5,7 @@
   <div class="footer-copyright">
     <div class="container">
       <div class="flex flex-center space-between">
-        <span class="copyright">&copy; {!! current_time('Y') !!} {{ get_bloginfo('name', 'display') }}</span>
-        <a href="/privacy-policy/">Privacy Policy</a>
+        <p class="copyright">&copy; {!! current_time('Y') !!} {{ get_bloginfo('name', 'display') }} &nbsp;|&nbsp; <a href="/privacy-policy/">Privacy Policy</a></p>
         @include('partials.unity')
       </div>
     </div>

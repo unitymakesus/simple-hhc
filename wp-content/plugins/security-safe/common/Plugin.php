@@ -637,6 +637,31 @@ class Plugin {
 
     } // increase_cache_busting()
 
+    
+    /**
+     * Clears Cached PHP Functions 
+     * @since 1.1.13
+     */
+    static function clear_php_cache() {
+        
+        if ( version_compare( PHP_VERSION, '5.5.0', '>=' ) ) {
+
+            if ( function_exists('opcache_reset') ) { 
+
+                opcache_reset(); 
+            }
+
+        } else {
+
+            if ( function_exists('apc_clear_cache') ) { 
+
+                apc_clear_cache();
+            }
+
+        } // PHP_VERSION
+
+    } // clear_php_cache()
+
 
     /**
      * Writes to debug.log for troubleshooting

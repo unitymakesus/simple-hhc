@@ -1393,6 +1393,8 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
     line-height: 1.2; }
   .ab-block-cta .ab-cta-text {
     line-height: 1.4; }
+    .ab-block-cta .ab-cta-text p {
+      color: inherit; }
     .ab-block-cta .ab-cta-text a {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;
@@ -2068,7 +2070,6 @@ body:not(.wp-admin) .ab-block-notice.ab-dismissable {
   margin: 0 0 1.2em 0;
   position: relative;
   background: #fff;
-  color: #293038;
   padding: 0; }
   .ab-block-container.alignfull .editor-block-list__block {
     max-width: 100%; }

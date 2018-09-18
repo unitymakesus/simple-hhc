@@ -14,13 +14,19 @@
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
     @endif
+    <a href="#content" class="screen-reader-text">Skip to content</a>
     <!--[if IE]>
       <div class="alert alert-warning">
         {!! __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage') !!}
       </div>
     <![endif]-->
     @php do_action('get_header') @endphp
-    @include('partials.header')
+    @php $logo_align = get_theme_mod( 'header_logo_align' ) @endphp
+    @if ($logo_align == 'inline-left')
+      @include('partials.header-inline')
+    @else
+      @include('partials.header-float')
+    @endif
     <div id="content" class="content" role="document">
       <div class="wrap">
         @if (App\display_sidebar())

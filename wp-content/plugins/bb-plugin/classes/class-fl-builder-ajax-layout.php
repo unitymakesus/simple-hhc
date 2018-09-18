@@ -214,7 +214,10 @@ final class FLBuilderAJAXLayout {
 		}
 
 		// Return the response.
-		return self::render( $render_id );
+		return array(
+			'layout' => self::render( $render_id ),
+			'config' => FLBuilderUISettingsForms::get_node_js_config(),
+		);
 	}
 
 	/**
@@ -320,6 +323,7 @@ final class FLBuilderAJAXLayout {
 
 			$post_data 		 = FLBuilderModel::get_post_data();
 			$partial_refresh = false;
+			$node_type = null;
 
 			// Check for partial refresh if we have a node ID.
 			if ( isset( $post_data['node_id'] ) ) {
@@ -455,7 +459,12 @@ final class FLBuilderAJAXLayout {
 		// Get the rendered HTML.
 		$html = ob_get_clean();
 
-		// Render shortcodes.
+		/**
+		 * Use this filter to prevent the builder from rendering shortcodes.
+		 * It is useful if you don’t want shortcodes rendering while the builder UI is active.
+		 * @see fl_builder_render_shortcodes
+		 * @link https://kb.wpbeaverbuilder.com/article/117-plugin-filter-reference
+		 */
 		if ( apply_filters( 'fl_builder_render_shortcodes', true ) ) {
 			$html = apply_filters( 'fl_builder_before_render_shortcodes', $html );
 			ob_start();
