@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "69ab087d65896895d52b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8637ef2c6bb9ba57f84e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -727,9 +727,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!*********************************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/lib/html5-entities.js ***!
-  \*********************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/lib/html5-entities.js ***!
+  \****************************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports) {
@@ -1297,9 +1297,9 @@ module.exports = function(module) {
 
 /***/ }),
 /* 5 */
-/*!**********************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/querystring-es3/index.js ***!
-  \**********************************************************************************************************************/
+/*!*****************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/querystring-es3/index.js ***!
+  \*****************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1313,9 +1313,9 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ 7);
 
 /***/ }),
 /* 6 */
-/*!***********************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/querystring-es3/decode.js ***!
-  \***********************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/querystring-es3/decode.js ***!
+  \******************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1409,9 +1409,9 @@ var isArray = Array.isArray || function (xs) {
 
 /***/ }),
 /* 7 */
-/*!***********************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/querystring-es3/encode.js ***!
-  \***********************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/querystring-es3/encode.js ***!
+  \******************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1506,9 +1506,9 @@ var objectKeys = Object.keys || function (obj) {
 
 /***/ }),
 /* 8 */
-/*!*****************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/strip-ansi/index.js ***!
-  \*****************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/strip-ansi/index.js ***!
+  \************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1524,9 +1524,9 @@ module.exports = function (str) {
 
 /***/ }),
 /* 9 */
-/*!*****************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/ansi-regex/index.js ***!
-  \*****************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/ansi-regex/index.js ***!
+  \************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1648,9 +1648,9 @@ module.exports.showProblems = showProblems;
 
 /***/ }),
 /* 11 */
-/*!****************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/ansi-html/index.js ***!
-  \****************************************************************************************************************/
+/*!***********************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/ansi-html/index.js ***!
+  \***********************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1836,9 +1836,9 @@ ansiHTML.reset()
 
 /***/ }),
 /* 12 */
-/*!********************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/index.js ***!
-  \********************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/index.js ***!
+  \***************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1853,9 +1853,9 @@ module.exports = {
 
 /***/ }),
 /* 13 */
-/*!*******************************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/lib/xml-entities.js ***!
-  \*******************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/lib/xml-entities.js ***!
+  \**************************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports) {
@@ -2019,9 +2019,9 @@ module.exports = XmlEntities;
 
 /***/ }),
 /* 14 */
-/*!*********************************************************************************************************************************!*\
-  !*** /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/lib/html4-entities.js ***!
-  \*********************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/node_modules/html-entities/lib/html4-entities.js ***!
+  \****************************************************************************************************************************************************/
 /*! dynamic exports provided */
 /*! all exports used */
 /***/ (function(module, exports) {
@@ -2367,7 +2367,7 @@ module.exports = function(hash, moduleMap, options) {
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/unity/Sites/hearinghealthcare/app/public/wp-content/themes/simple/resources/assets/build/util/../helpers/hmr-client.js */2);
+__webpack_require__(/*! /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/resources/assets/build/util/../helpers/hmr-client.js */2);
 module.exports = __webpack_require__(/*! ./scripts/customizer.js */43);
 
 

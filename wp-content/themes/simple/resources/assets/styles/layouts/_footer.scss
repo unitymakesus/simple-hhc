@@ -1,15 +1,32 @@
-.footer-copyright {
-  @media #{$small-and-down} {
+.page-footer {
+  .footer-center {
     text-align: center;
-    font-size: 0.9em;
-    line-height: 2em;
+  }
 
-    .flex, .copyright, .unity-link {
-      display: block;
+  .footer-right {
+    text-align: right;
+  }
+
+  .footer-content {
+    padding: 1em;
+
+    a {
+      color: $color-white;
     }
+  }
 
-    .unity-link {
-      margin: 5px auto;
+  .footer-copyright {
+    padding: 0 1em;
+    background-color: $color-white;
+    color: $color-black;
+    height: 40px;
+    margin-bottom: 0;
+    font-size: 0.9em;
+  }
+
+  @media #{$small-and-down} {
+    .footer-left, .footer-center, .footer-right {
+      text-align: center;
     }
   }
 }

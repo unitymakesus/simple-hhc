@@ -20,8 +20,6 @@ body {
 .content {
   position: relative;
   z-index: 3;
-
-  @extend .container;
 }
 
 .flex {
@@ -83,8 +81,20 @@ body {
   justify-content: space-between;
 }
 
+.space-around {
+  justify-content: space-around;
+}
+
 .space-evenly {
   justify-content: space-evenly;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
 }
 
 .float-left {

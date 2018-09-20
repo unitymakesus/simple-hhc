@@ -10,11 +10,11 @@
     vertical-align: middle;
 
     path {
-      fill: $color-white;
+      fill: $color-black;
     }
   }
 
   &:hover, &:focus {
-    outline: 1px solid $color-white;
+    outline: none;
   }
 }
