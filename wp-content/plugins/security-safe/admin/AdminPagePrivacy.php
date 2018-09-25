@@ -3,7 +3,7 @@
 namespace SecuritySafe;
 
 // Prevent Direct Access
-if ( ! defined( 'WPINC' ) ) { die; }
+if ( ! defined( 'ABSPATH' ) ) { die; }
 
 /**
  * Class AdminPagePrivacy
@@ -53,7 +53,10 @@ class AdminPagePrivacy extends AdminPage {
             
             // WordPress Version
             $classes = '';
-            $rows = $this->form_checkbox( $this->settings, 'WordPress Version', 'wp_generator', 'Hide WordPress Version', 'WordPress leaves little public footprints about the version of your site in multiple places. This feature removes the WordPress version from the generator tag and RSS feed.', $classes, false );
+            $rows = $this->form_checkbox( $this->settings, 'WordPress Version', 'wp_generator', 'Hide WordPress Version Publicly', 'WordPress leaves little public footprints about the version of your site in multiple places visible to the public. This feature removes the WordPress version from the generator tag and RSS feed.', $classes, false );
+            
+            $classes = '';
+            $rows .= $this->form_checkbox( $this->settings, '', 'wp_version_admin_footer', 'Hide WordPress Version in Admin Footer', 'WordPress places the version number at the bottom of the WP-Admin screen.', $classes, false );
             
             // Script Versions
             $classes = '';

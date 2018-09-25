@@ -143,8 +143,11 @@
 											"Content-Type" => "application/json"
 											),
 							);
-
-			$response = wp_remote_request('https://api.cloudflare.com/client/v4/zones/?status=active&page=1&per_page=1000', $header);
+			
+			/*
+			status=active has been removed because status may be "pending"
+			*/
+			$response = wp_remote_request('https://api.cloudflare.com/client/v4/zones/?page=1&per_page=1000', $header);
 
 			if(!$response || is_wp_error($response)){
 				$res = array("success" => false, "error_message" => $response->get_error_message());

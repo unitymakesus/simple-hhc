@@ -619,14 +619,6 @@
 				$ifIsNotSecure = "RewriteCond %{HTTPS} !=on";
 			}
 
-			// WeePie Cookie Allow: to serve cache if the cookie named wpca_consent is set
-			if($this->isPluginActive('wp-cookie-allow/wp-cookie-allow.php')){
-				$consent_cookie = "RewriteCond %{HTTP:Cookie} wpca_consent=1"."\n";
-				$consent_cookie .= "RewriteCond %{HTTP:Cookie} !wpca_cc [OR]"."\n";
-				$consent_cookie .= "RewriteCond %{HTTP:Cookie} wpca_consent=1"."\n";
-				$consent_cookie .= "RewriteCond %{HTTP:Cookie} wpca_cc=functional,analytical,social-media,advertising,other"."\n";
-			}
-
 			if($this->is_trailing_slash()){
 				$trailing_slash_rule = "RewriteCond %{REQUEST_URI} \/$"."\n";
 			}else{
@@ -1605,7 +1597,7 @@
 				    			<div class="wpfc-premium-step-footer">
 				    				<?php
 				    					if(get_bloginfo('language') == "tr-TR"){
-				    						$premium_price = "100TL";
+				    						$premium_price = "150TL";
 				    					}else{
 					    					$premium_price = "$49.99";
 				    					}
@@ -1841,10 +1833,10 @@
 				    		<div class="integration-page" style="display: block;width:98%;float:left;">
 
 				    			<div wpfc-cdn-name="maxcdn" class="int-item int-item-left">
-				    				<img src="<?php echo plugins_url("wp-fastest-cache/images/maxcdn.png"); ?>" />
+				    				<img style="border-radius:50px;" src="<?php echo plugins_url("wp-fastest-cache/images/stackpath.png"); ?>" />
 				    				<div class="app">
-				    					<div style="font-weight:bold;font-size:14px;">CDN by MaxCDN</div>
-				    					<p>Experts in Content Delivery Network Services</p>
+				    					<div style="font-weight:bold;font-size:14px;">CDN by StackPath</div>
+				    					<p>Secure and accelerate your web sites</p>
 				    				</div>
 				    				<div class="meta"></div>
 				    			</div>

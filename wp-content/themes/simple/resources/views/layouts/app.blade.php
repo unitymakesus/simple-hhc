@@ -34,7 +34,7 @@
             @include('partials.sidebar')
           </aside>
         @endif -->
-        <main id="main" class="main" role="main">
+        <main role="main">
           @yield('content')
         </main>
       </div>

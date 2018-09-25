@@ -3,7 +3,7 @@
 namespace SecuritySafe;
 
 // Prevent Direct Access
-if ( ! defined( 'WPINC' ) ) { die; }
+if ( ! defined( 'ABSPATH' ) ) { die; }
 
 /**
  * Class AdminPageAccess
@@ -75,6 +75,7 @@ class AdminPageAccess extends AdminPage {
         return $html;
 
     } // tab_settings()
+
 
 
 } // AdminPageAccess()
