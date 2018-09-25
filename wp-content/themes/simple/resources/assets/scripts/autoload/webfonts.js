@@ -32,6 +32,6 @@ switch (simpleFont) {
 
 WebFont.load({
  google: {
-   families: fontFamilies,
- },
+   families: fontFamilies
+ }
 });

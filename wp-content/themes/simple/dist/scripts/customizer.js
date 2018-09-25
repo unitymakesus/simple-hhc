@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "95dc5cfd3df354cbf825"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "08cb638fc939eba8daeb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -722,7 +722,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(46)(__webpack_require__.s = 46);
+/******/ 	return hotCreateRequire(47)(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2363,7 +2363,8 @@ module.exports = function(hash, moduleMap, options) {
 /* 43 */,
 /* 44 */,
 /* 45 */,
-/* 46 */
+/* 46 */,
+/* 47 */
 /*!***************************************************************************!*\
   !*** multi ./build/util/../helpers/hmr-client.js ./scripts/customizer.js ***!
   \***************************************************************************/
@@ -2372,11 +2373,11 @@ module.exports = function(hash, moduleMap, options) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/lexinamer/Desktop/Unity/Github/hearinghealthcare/app/public/wp-content/themes/simple/resources/assets/build/util/../helpers/hmr-client.js */2);
-module.exports = __webpack_require__(/*! ./scripts/customizer.js */47);
+module.exports = __webpack_require__(/*! ./scripts/customizer.js */48);
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /*!*******************************!*\
   !*** ./scripts/customizer.js ***!
   \*******************************/

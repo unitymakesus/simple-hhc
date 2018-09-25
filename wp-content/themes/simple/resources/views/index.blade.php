@@ -9,10 +9,11 @@
     </div>
     {!! get_search_form(false) !!}
   @endif
-
-  @while (have_posts()) @php the_post() @endphp
-    @include('partials.content-'.get_post_type())
-  @endwhile
+  <div class="grid">
+    @while (have_posts()) @php the_post() @endphp
+      @include('partials.content-'.get_post_type())
+    @endwhile
+  </div>
 
   @php
     the_posts_pagination([

@@ -1,4 +1,4 @@
-<article class="excerpt col m6 s12">
+<article class="excerpt">
   @if (has_post_thumbnail())
       @php
         $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
