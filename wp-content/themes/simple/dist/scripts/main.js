@@ -286,7 +286,7 @@ Router.prototype.loadEvents = function loadEvents () {
       columns: 2,
       margin: {
         x: 20,
-        y: 10,
+        y: 30,
       },
       breakAt: {
         767: 1,
