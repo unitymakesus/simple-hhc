@@ -50,7 +50,7 @@
 }
 
 // Sign up Contact Form
-#ctct-form-286 {
+.ctct-form-wrapper.ctct-form-wrapper {
   .ctct-form-field {
     text-align: center;
     margin: 0;
@@ -58,15 +58,25 @@
 
   .ctct-submit {
     width: 100%;
+
+    @extend .btn;
+    @extend .btn-tertiary;
   }
 
   label {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: $color-white;
   }
 
-  input {
-    border: 1px solid $color-white;
+  input[type="text"], input[type="email"] {
+    border: 1px solid rgba($color-white, 0.7);
+    border-radius: 1px;
     width: 99.5%;
+    padding: 2px 10px;
+    box-sizing: border-box;
+  }
+
+  .ctct-form abbr {
+    color: $error-color;
   }
 }

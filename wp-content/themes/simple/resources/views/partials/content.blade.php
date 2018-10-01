@@ -11,7 +11,7 @@
   @endif
 
   <div class="entry-summary" itemprop="description">
-    <h3 class="entry-title" itemprop="name"><a href="{{ get_permalink() }}">{{ get_the_title() }}</a></h3>
+    <h3 class="entry-title" itemprop="name"><a href="{{ get_permalink() }}">{!! get_the_title() !!}</a></h3>
     @include('partials/entry-meta')
 
     @php the_excerpt(140) @endphp

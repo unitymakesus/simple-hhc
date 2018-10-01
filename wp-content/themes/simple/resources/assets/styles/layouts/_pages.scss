@@ -1,13 +1,3 @@
-.content {
-  ul {
-    padding-left: 20px;
-
-    li {
-      list-style-type: disc;
-    }
-  }
-}
-
 .badges {
   img {
     height: 100px;
@@ -17,43 +7,4 @@
 
 .page-header {
   text-align: center;
-}
-
-.person {
-  margin: 3em 0;
-
-  .col {
-    padding-left: 0;
-  }
-
-  img {
-    object-fit: cover;
-  }
-
-  h2, h3 {
-    margin: 0;
-  }
-
-  .social-icons {
-    padding-top: 10px;
-    text-align: left;
-
-    li {
-      padding: 0;
-
-      &::before {
-        content: '';
-      }
-
-      a {
-        &:hover {
-          box-shadow: none;
-        }
-
-        &::before {
-          left: 0;
-        }
-      }
-    }
-  }
 }
