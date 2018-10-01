@@ -48,3 +48,25 @@
     cursor: pointer;
   }
 }
+
+// Sign up Contact Form
+#ctct-form-286 {
+  .ctct-form-field {
+    text-align: center;
+    margin: 0;
+  }
+
+  .ctct-submit {
+    width: 100%;
+  }
+
+  label {
+    font-size: 0.7rem;
+    color: $color-white;
+  }
+
+  input {
+    border: 1px solid $color-white;
+    width: 99.5%;
+  }
+}

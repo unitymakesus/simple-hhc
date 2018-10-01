@@ -10546,6 +10546,25 @@ strong {
   cursor: pointer;
 }
 
+#ctct-form-286 .ctct-form-field {
+  text-align: center;
+  margin: 0;
+}
+
+#ctct-form-286 .ctct-submit {
+  width: 100%;
+}
+
+#ctct-form-286 label {
+  font-size: 0.7rem;
+  color: #FFF;
+}
+
+#ctct-form-286 input {
+  border: 1px solid #FFF;
+  width: 99.5%;
+}
+
 .social-icons,
 #menu-social-links {
   text-align: right;
@@ -11464,6 +11483,14 @@ nav ul li.current_page_item a {
   .page-footer .footer-right {
     text-align: center;
   }
+}
+
+.content ul {
+  padding-left: 20px;
+}
+
+.content ul li {
+  list-style-type: disc;
 }
 
 .badges img {
