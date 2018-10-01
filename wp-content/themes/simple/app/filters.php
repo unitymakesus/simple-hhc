@@ -13,6 +13,10 @@ add_filter('body_class', function (array $classes) {
         }
     }
 
+    if (is_home()) {
+      $classes[] = 'archive';
+    }
+
     /** Add class if sidebar is active */
     if (display_sidebar()) {
         $classes[] = 'sidebar-primary';
@@ -78,9 +82,9 @@ add_filter('sage/display_sidebar', function ($display) {
   isset($display) || $display = in_array(true, [
     // The sidebar will be displayed if any of the following return true
     // is_singular('post'),
-    is_home(),
-    is_date(),
-    is_category()
+    // is_home(),
+    // is_date(),
+    // is_category()
   ]);
 
   return $display;

@@ -29,12 +29,12 @@
     @endif
     <div id="content" class="content" role="document">
       <div class="wrap">
-        <!-- @if (App\display_sidebar())
+        @if (App\display_sidebar())
           <aside id="aside" class="sidebar" role="complementary">
             @include('partials.sidebar')
           </aside>
-        @endif -->
-        <main role="main">
+        @endif
+        <main role="main" class="main">
           @yield('content')
         </main>
       </div>

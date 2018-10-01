@@ -141,21 +141,22 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
   /**
    * Customize colors based on selected color scheme
    */
-    $wp_customize->add_section( 'simple_header' , array(
+  $wp_customize->add_section( 'simple_header' , array(
     'title'      => __( 'Header Settings', 'simple' ),
     'priority'   => 40,
     'capability'  => 'edit_theme_options',
-    ) );
+    )
+  );
 
-    $wp_customize->add_setting( 'header_logo_align', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+  $wp_customize->add_setting( 'header_logo_align', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
     array(
      'default'    => 'float-left', //Default setting/value to save
      'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
      'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
     )
-    );
+  );
 
-    $wp_customize->add_control(
+  $wp_customize->add_control(
     'simple_header_logo_align', //Set a unique ID for the control
     array(
      'label'      => __( 'Logo Alignment', 'simple' ), //Admin-visible name of the control
@@ -169,17 +170,36 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
        'float-center'    => 'Float Center',
      )
     )
-    );
+  );
 
-    $wp_customize->add_setting( 'header_cta_text', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+  $wp_customize->add_setting( 'header_cta_headline', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
     array(
      'default'    => '', //Default setting/value to save
      'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
      'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
     )
-    );
+  );
 
-    $wp_customize->add_control(
+  $wp_customize->add_control(
+    'simple_header_cta_headline', //Set a unique ID for the control
+    array(
+     'label'      => __( 'CTA Headline (optional)', 'simple' ), //Admin-visible name of the control
+     'section'    => 'simple_header', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+     'settings'   => 'header_cta_headline', //Which setting to load and manipulate (serialized is okay)
+     'priority'   => 10, //Determines the order this control appears in for the specified section
+     'type'       => 'text'
+    )
+  );
+
+  $wp_customize->add_setting( 'header_cta_text', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+    array(
+     'default'    => '', //Default setting/value to save
+     'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+     'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+    )
+  );
+
+  $wp_customize->add_control(
     'simple_header_cta_text', //Set a unique ID for the control
     array(
      'label'      => __( 'CTA Button Text', 'simple' ), //Admin-visible name of the control
@@ -188,17 +208,17 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
      'priority'   => 10, //Determines the order this control appears in for the specified section
      'type'       => 'text'
     )
-    );
+  );
 
-    $wp_customize->add_setting( 'header_cta_link', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-    array(
-     'default'    => '', //Default setting/value to save
-     'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-     'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-    )
-    );
+  $wp_customize->add_setting( 'header_cta_link', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+  array(
+   'default'    => '', //Default setting/value to save
+   'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+   'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+  )
+  );
 
-    $wp_customize->add_control(
+  $wp_customize->add_control(
     'simple_header_cta_link', //Set a unique ID for the control
     array(
      'label'      => __( 'CTA Button Link', 'simple' ), //Admin-visible name of the control
@@ -207,18 +227,18 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
      'priority'   => 10, //Determines the order this control appears in for the specified section
      'type'       => 'url'
     )
-    );
+  );
 
-    $wp_customize->add_setting( 'header_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+  $wp_customize->add_setting( 'header_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
     array(
       'default'    => 'transparent', //Default setting/value to save
       'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
       'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
       // 'sanitize_callback' => 'sanitize_hex_color',
     )
-    );
+  );
 
-    $wp_customize->add_control(new \O2_Customizer_Color_Palette_Control(
+  $wp_customize->add_control(new \O2_Customizer_Color_Palette_Control(
     $wp_customize,
     'simple_header_color', //Set a unique ID for the control
     array(
@@ -229,52 +249,82 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
       'type'       => 'select',
       'choices'    => $theme_colors
     )
-    ));
+  ));
 
-    $wp_customize->add_setting( 'header_nav_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-     array(
-       'default'    => 'transparent', //Default setting/value to save
-       'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-       'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-       // 'sanitize_callback' => 'sanitize_hex_color',
-     )
-    );
+  $wp_customize->add_setting( 'header_nav_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+   array(
+     'default'    => 'transparent', //Default setting/value to save
+     'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+     'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+     // 'sanitize_callback' => 'sanitize_hex_color',
+   )
+  );
 
-    $wp_customize->add_control(new \O2_Customizer_Color_Palette_Control(
-     $wp_customize,
-     'simple_header_nav_color', //Set a unique ID for the control
-     array(
-       'label'      => __( 'Header Navbar Color', 'simple' ), //Admin-visible name of the control
-       'section'    => 'simple_header', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
-       'settings'   => 'header_nav_color', //Which setting to load and manipulate (serialized is okay)
-       'priority'   => 20, //Determines the order this control appears in for the specified section
-       'type'       => 'select',
-       'choices'    => $theme_colors
-     )
-    ));
+  $wp_customize->add_control(new \O2_Customizer_Color_Palette_Control(
+    $wp_customize,
+    'simple_header_nav_color', //Set a unique ID for the control
+    array(
+      'label'      => __( 'Header Navbar Color', 'simple' ), //Admin-visible name of the control
+      'section'    => 'simple_header', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+      'settings'   => 'header_nav_color', //Which setting to load and manipulate (serialized is okay)
+      'priority'   => 20, //Determines the order this control appears in for the specified section
+      'type'       => 'select',
+      'choices'    => $theme_colors
+    )
+  ));
 
-    $wp_customize->add_setting( 'header_text_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-      array(
-        'default'    => 'dark', //Default setting/value to save
-        'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-        'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+  $wp_customize->add_setting( 'header_text_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+    array(
+      'default'    => 'dark', //Default setting/value to save
+      'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+      'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+    )
+  );
+
+  $wp_customize->add_control(
+    'simple_header_text_color', //Set a unique ID for the control
+    array(
+      'label'      => __( 'Text Color', 'simple' ), //Admin-visible name of the control
+      'section'    => 'simple_header', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+      'settings'   => 'header_text_color', //Which setting to load and manipulate (serialized is okay)
+      'priority'   => 18, //Determines the order this control appears in for the specified section
+      'type'       => 'radio',
+      'choices'    => array(
+        'dark'     => 'Dark',
+        'light'    => 'Light',
       )
-    );
+    )
+  );
 
-    $wp_customize->add_control(
-      'simple_header_text_color', //Set a unique ID for the control
-      array(
-        'label'      => __( 'Text Color', 'simple' ), //Admin-visible name of the control
-        'section'    => 'simple_header', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
-        'settings'   => 'header_text_color', //Which setting to load and manipulate (serialized is okay)
-        'priority'   => 18, //Determines the order this control appears in for the specified section
-        'type'       => 'radio',
-        'choices'    => array(
-          'dark'     => 'Dark',
-          'light'    => 'Light',
-        )
-      )
-    );
+  $wp_customize->add_section( 'simple_footer' , array(
+    'title'      => __( 'Footer Settings', 'simple' ),
+    'priority'   => 40,
+    'capability'  => 'edit_theme_options',
+    )
+  );
+
+  $wp_customize->add_setting( 'footer_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+    array(
+      'default'    => 'transparent', //Default setting/value to save
+      'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+      'transport'  => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+      // 'sanitize_callback' => 'sanitize_hex_color',
+    )
+  );
+
+  $wp_customize->add_control(new \O2_Customizer_Color_Palette_Control(
+    $wp_customize,
+    'simple_footer_color', //Set a unique ID for the control
+    array(
+      'label'      => __( 'Footer Color', 'simple' ), //Admin-visible name of the control
+      'section'    => 'simple_footer', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+      'settings'   => 'footer_color', //Which setting to load and manipulate (serialized is okay)
+      'priority'   => 15, //Determines the order this control appears in for the specified section
+      'type'       => 'select',
+      'choices'    => $theme_colors
+    )
+  ));
+
 });
 
 /**

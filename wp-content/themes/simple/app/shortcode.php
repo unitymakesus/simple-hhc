@@ -48,9 +48,9 @@ add_shortcode('team', function($atts) {
         <?php
           if (!empty($short_bio = get_field('short_bio'))) {
             echo $short_bio;
+					}
+					if (!empty(get_field('longer_bio'))) {
             echo '<p><a href="' . get_permalink() . '">Read more about ' . get_the_title() . '</a></p>';
-          } else {
-            the_content();
           }
         ?>
       </div>

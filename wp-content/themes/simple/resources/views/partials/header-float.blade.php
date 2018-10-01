@@ -3,6 +3,7 @@
   $nav_color = get_theme_mod( 'header_nav_color' );
   $text_color = get_theme_mod( 'header_text_color' );
   $logo_align = get_theme_mod( 'header_logo_align' );
+  $cta_headline = get_theme_mod( 'header_cta_headline' );
   $cta_text = get_theme_mod( 'header_cta_text' );
   $cta_link = get_theme_mod( 'header_cta_link' );
 @endphp
@@ -28,7 +29,10 @@
       </div>
       @if (!empty($cta_text) && !empty($cta_link))
         <div class="cta-link absolute-right">
-          <a href="{{ $cta_link }}" class="btn">{{ $cta_text }}</a>
+          @if (!empty($cta_headline))
+            <div class="cta-headline">{{ $cta_headline }}</div>
+          @endif
+          <a href="{{ $cta_link }}" class="btn btn-primary">{{ $cta_text }}</a>
         </div>
       @endif
     </div>

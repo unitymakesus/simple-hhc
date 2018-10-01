@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/wp-content/themes/simple/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -72,15 +72,15 @@ module.exports = jQuery;
 
 /***/ }),
 
-/***/ 14:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(15);
+module.exports = __webpack_require__(16);
 
 
 /***/ }),
 
-/***/ 15:
+/***/ 16:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -102,7 +102,7 @@ wp.customize.bind('ready', function() {
       'sunrise'   : ['#CC5803', '#E2711D', '#FF9505', '#FFB627', '#FFF1DB'],
     }
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.o2-color-palette-group label[for*="simple_header"]').each(function() {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.o2-color-palette-group label[for*="simple_header"], .o2-color-palette-group label[for*="simple_footer"]').each(function() {
       var hex = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('for').slice(-7);
 
       if (__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray(hex, themes[selectedColor]) >= 0 || __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.inArray(hex, neutral) >= 0) {
@@ -130,7 +130,7 @@ wp.customize.bind('ready', function() {
   // ... and on radio button change
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()( 'input[name="o2_color_palette_simple_theme_color"]' ).on( 'change', hideShowColorOptions );
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()( 'input[name="_customize-radio-simple_header_logo_align"]' ).on( 'change', hideShowNavOptions );
-  
+
 });
 
 

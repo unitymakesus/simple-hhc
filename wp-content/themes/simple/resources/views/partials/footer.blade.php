@@ -1,4 +1,8 @@
-<footer class="content-info page-footer" role="contentinfo">
+@php
+  $footer_color = get_theme_mod( 'footer_color' );
+  $text_color = get_theme_mod( 'footer_text_color' );
+@endphp
+<footer class="content-info page-footer" role="contentinfo" style="background-color: {{ $footer_color }}">
   <div class="footer-content row flex space-between align-center">
     <div class="footer-left col m4 s12">
       @php dynamic_sidebar('footer-left') @endphp

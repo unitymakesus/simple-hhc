@@ -1,5 +1,5 @@
 @php
-  $topic_list = wp_get_post_terms(get_the_id(), 'category', array('fields' => 'names'));
+  $topic_list = wp_get_post_terms(get_the_id(), 'category', array('fields' => 'all'));
 @endphp
 <div class="meta">
   <span class="label">
@@ -28,7 +28,7 @@
   @if (!empty($topic_list))
     @php
       foreach ($topic_list as &$topic) :
-        $topic = '<span itemprop="about">' . $topic . '</span>';
+        $topic = '<span itemprop="about"><a href="' . get_term_link($topic->term_id) . '">' . $topic->name . '</a></span>';
       endforeach;
     @endphp
   <span class="label">

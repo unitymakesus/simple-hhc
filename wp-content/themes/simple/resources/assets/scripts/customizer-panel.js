@@ -13,7 +13,7 @@ wp.customize.bind('ready', function() {
       'sunrise'   : ['#CC5803', '#E2711D', '#FF9505', '#FFB627', '#FFF1DB'],
     }
 
-    $('.o2-color-palette-group label[for*="simple_header"]').each(function() {
+    $('.o2-color-palette-group label[for*="simple_header"], .o2-color-palette-group label[for*="simple_footer"]').each(function() {
       var hex = $(this).attr('for').slice(-7);
 
       if ($.inArray(hex, themes[selectedColor]) >= 0 || $.inArray(hex, neutral) >= 0) {
@@ -41,5 +41,5 @@ wp.customize.bind('ready', function() {
   // ... and on radio button change
   $( 'input[name="o2_color_palette_simple_theme_color"]' ).on( 'change', hideShowColorOptions );
   $( 'input[name="_customize-radio-simple_header_logo_align"]' ).on( 'change', hideShowNavOptions );
-  
+
 });

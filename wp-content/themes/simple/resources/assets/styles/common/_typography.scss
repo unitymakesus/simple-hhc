@@ -15,17 +15,24 @@ html {
 }
 
 $body-fonts-list: $font-source-sans-pro, $font-arimo, $font-crimson-text, $font-open-sans, $font-libre-baskerville, $font-muli;
-$body-fonts-fallback-list: "sans-serif", "sans-serif", "serif", "sans-serif", "serif", "sans-serif";
 $header-fonts-list: $font-bitter, $font-didact-gothic, $font-fjalla-one, $font-dancing-script, $font-open-sans, $font-ovo;
-$header-fonts-fallback-list: "serif", "sans-serif", "sans-serif", "cursive", "sans-serif", "serif";
+$themes-list: "bright", "chrome", "executive", "grass", "ocean", "sunrise";
+$color-1-list: $color-bright-1, $color-chrome-2, $color-executive-2, $color-grass-1, $color-ocean-2, $color-sunrise-1;
 
 body {
   @for $i from 1 through length($body-fonts-list) {
     &[data-font="#{$i}"] {
-      font-family: nth($body-fonts-list, $i), nth($body-fonts-fallback-list, $i);
+      font-family: nth($body-fonts-list, $i);
 
       h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, blockquote {
-        font-family: nth($header-fonts-list, $i), nth($header-fonts-fallback-list, $i);
+        font-family: nth($header-fonts-list, $i);
+      }
+    }
+  }
+  @for $j from 1 through length($themes-list) {
+    &[data-color="#{nth($themes-list, $j)}"] {
+      h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+        color: nth($color-1-list, $j);
       }
     }
   }
@@ -73,7 +80,7 @@ a {
 
 .main {
   p, li, dt, dd {
-    line-height: 1.8em;
+    line-height: 1.6em;
   }
 
   dt {
@@ -99,13 +106,21 @@ a {
       &::before {
         content: '\2022';
         display: block;
-        // color: $color-purple;
         position: absolute;
         left: 10px;
         speak: none;
 
         html[data-contrast="true"] & {
           color: $color-white;
+        }
+
+        $themes-list: "bright", "chrome", "executive", "grass", "ocean", "sunrise";
+        $color-list: $color-bright-4, $color-chrome-3, $color-executive-4, $color-grass-4, $color-ocean-4, $color-sunrise-4;
+
+        @for $n from 1 through length($themes-list) {
+          [data-color="#{nth($themes-list, $n)}"] & {
+            color: nth($color-list, $n);
+          }
         }
       }
     }
