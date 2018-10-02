@@ -11713,6 +11713,14 @@ nav ul li.current_page_item a {
   .page-footer .footer-right {
     text-align: center;
   }
+
+  .page-footer .footer-center {
+    margin: 2em 0;
+  }
+
+  .page-footer #menu-social-links {
+    text-align: center;
+  }
 }
 
 .badges img {
