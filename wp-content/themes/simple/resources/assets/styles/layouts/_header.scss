@@ -44,16 +44,6 @@
     padding: 10px 20px;
     text-align: right;
 
-    @media #{$medium-and-down} {
-      padding: 10px 0;
-      display: flex;
-      align-items: flex-end;
-
-      .cta-headline {
-        padding: 0 1rem;
-      }
-    }
-
     .btn {
       height: auto;
       padding: 5px 2rem;
@@ -71,6 +61,18 @@
         [data-color="#{nth($themes-list, $n)}"] & {
           color: nth($color-1-list, $n);
         }
+      }
+    }
+
+    @media #{$medium-and-down} {
+      padding: 10px 0;
+
+      .cta-headline {
+        padding: 0 1rem;
+      }
+
+      .btn {
+        padding: 5px 1rem;
       }
     }
   }

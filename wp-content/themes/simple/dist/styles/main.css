@@ -11423,22 +11423,6 @@ html[data-contrast="true"] .pagination span.current {
   text-align: right;
 }
 
-@media only screen and (max-width: 992px) {
-  .banner .cta-link {
-    padding: 10px 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
-  }
-
-  .banner .cta-link .cta-headline {
-    padding: 0 1rem;
-  }
-}
-
 .banner .cta-link .btn,
 .banner .cta-link .btn-large,
 .banner .cta-link .ctct-form-wrapper.ctct-form-wrapper .ctct-submit,
@@ -11475,6 +11459,23 @@ html[data-contrast="true"] .pagination span.current {
 
 [data-color="sunrise"] .banner .cta-link .cta-headline {
   color: #CC5803;
+}
+
+@media only screen and (max-width: 992px) {
+  .banner .cta-link {
+    padding: 10px 0;
+  }
+
+  .banner .cta-link .cta-headline {
+    padding: 0 1rem;
+  }
+
+  .banner .cta-link .btn,
+  .banner .cta-link .btn-large,
+  .banner .cta-link .ctct-form-wrapper.ctct-form-wrapper .ctct-submit,
+  .ctct-form-wrapper.ctct-form-wrapper .banner .cta-link .ctct-submit {
+    padding: 5px 1rem;
+  }
 }
 
 .banner .navbar {
