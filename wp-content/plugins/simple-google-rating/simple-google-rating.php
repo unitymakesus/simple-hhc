@@ -165,7 +165,7 @@ final class Simple_Google_Rating {
 	 */
 	public function load_scripts_styles($hook) {
 		// Load only on settings page for this plugin OR front-end
-		if($hook != 'settings_page_simple-google-rating' || !is_admin()) {
+		if($hook == 'settings_page_simple-google-rating' || !is_admin()) {
 			wp_enqueue_style( 'sgr_css', plugins_url('css/style.css', __FILE__) );
 		}
 	}

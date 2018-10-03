@@ -88,25 +88,26 @@ final class Simple_Google_Rating_Admin {
 				?>
 			</form>
 			<?php
-				$data = Simple_Google_Rating()->shortcodes->get_place_data();
-				if (property_exists($data, 'error_message')) {
+				$settings = Simple_Google_Rating()->settings->get_settings();
+				if (!empty($settings)) {
+					$data = Simple_Google_Rating()->shortcodes->get_place_data();
 					ob_start();
-					?>
-						<div class="error">
-							<h3>Google Places API Error</h3>
-							<p>' . $data->error_message . '</p>
-						</div>
-					<?php
-					echo ob_get_clean();
-				} else {
-					ob_start();
-					?>
-						<h2>Ratings API Results</h2>
-						<p><strong>Business Name:</strong> <?php echo $data->result->name; ?></p>
-						<p><strong>Review Rating:</strong> <?php echo $data->result->rating; ?></p>
-						<?php echo do_shortcode('[google_rating]'); ?>
-						<p><strong>Shortcode:</strong> <pre>[google_rating]</pre></p>
-					<?php
+					if (property_exists($data, 'error_message')) {
+						?>
+							<div class="error">
+								<h3>Google Places API Error</h3>
+								<p><?php echo $data->error_message; ?></p>
+							</div>
+						<?php
+					} else {
+						?>
+							<h2>Ratings API Results</h2>
+							<p><strong>Business Name:</strong> <?php echo $data->result->name; ?></p>
+							<p><strong>Review Rating:</strong> <?php echo $data->result->rating; ?></p>
+							<?php echo do_shortcode('[google_rating]'); ?>
+							<p><strong>Shortcode:</strong> <code>[google_rating]</code></p>
+						<?php
+					}
 					echo ob_get_clean();
 				}
 			?>
