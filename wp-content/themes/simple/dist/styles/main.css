@@ -10436,6 +10436,10 @@ strong {
   font-weight: 700;
 }
 
+abbr[title] {
+  border-bottom: 0;
+}
+
 .fl-accordion-button-label {
   font-weight: 600;
   font-size: 1.2em;
@@ -10783,28 +10787,69 @@ strong {
   color: #A3320B;
 }
 
-.input-field [data-color="bright"] label:not(.label-icon).active {
+input:not([type]):not(.browser-default),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default) {
+  border: 1px solid #9999A1;
+}
+
+textarea.materialize-textarea {
+  border: 1px solid #9999A1;
+}
+
+.input-field label {
+  left: 5px;
+}
+
+[data-color="bright"] .input-field label:not(.label-icon).active {
   color: #2E827C;
+  -webkit-transform: translateY(-22px) scale(0.8);
+       -o-transform: translateY(-22px) scale(0.8);
+          transform: translateY(-22px) scale(0.8);
 }
 
-.input-field [data-color="chrome"] label:not(.label-icon).active {
+[data-color="chrome"] .input-field label:not(.label-icon).active {
   color: #66666E;
+  -webkit-transform: translateY(-22px) scale(0.8);
+       -o-transform: translateY(-22px) scale(0.8);
+          transform: translateY(-22px) scale(0.8);
 }
 
-.input-field [data-color="executive"] label:not(.label-icon).active {
+[data-color="executive"] .input-field label:not(.label-icon).active {
   color: #A3320B;
+  -webkit-transform: translateY(-22px) scale(0.8);
+       -o-transform: translateY(-22px) scale(0.8);
+          transform: translateY(-22px) scale(0.8);
 }
 
-.input-field [data-color="grass"] label:not(.label-icon).active {
+[data-color="grass"] .input-field label:not(.label-icon).active {
   color: #114B5F;
+  -webkit-transform: translateY(-22px) scale(0.8);
+       -o-transform: translateY(-22px) scale(0.8);
+          transform: translateY(-22px) scale(0.8);
 }
 
-.input-field [data-color="ocean"] label:not(.label-icon).active {
+[data-color="ocean"] .input-field label:not(.label-icon).active {
   color: #003459;
+  -webkit-transform: translateY(-22px) scale(0.8);
+       -o-transform: translateY(-22px) scale(0.8);
+          transform: translateY(-22px) scale(0.8);
 }
 
-.input-field [data-color="sunrise"] label:not(.label-icon).active {
+[data-color="sunrise"] .input-field label:not(.label-icon).active {
   color: #CC5803;
+  -webkit-transform: translateY(-22px) scale(0.8);
+       -o-transform: translateY(-22px) scale(0.8);
+          transform: translateY(-22px) scale(0.8);
 }
 
 .social-icons,
