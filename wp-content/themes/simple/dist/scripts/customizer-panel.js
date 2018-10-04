@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/wp-content/themes/simple/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -72,15 +72,15 @@ module.exports = jQuery;
 
 /***/ }),
 
-/***/ 15:
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(16);
+module.exports = __webpack_require__(20);
 
 
 /***/ }),
 
-/***/ 16:
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
