@@ -2647,10 +2647,30 @@ a {
 
 .z-depth-0,
 .pagination,
-.pagination a.active,
-.pagination a.current,
-.pagination span.active,
-.pagination span.current {
+.pagination [data-color="bright"] a.active,
+.pagination [data-color="bright"] a.current,
+.pagination [data-color="bright"] span.active,
+.pagination [data-color="bright"] span.current,
+.pagination [data-color="chrome"] a.active,
+.pagination [data-color="chrome"] a.current,
+.pagination [data-color="chrome"] span.active,
+.pagination [data-color="chrome"] span.current,
+.pagination [data-color="executive"] a.active,
+.pagination [data-color="executive"] a.current,
+.pagination [data-color="executive"] span.active,
+.pagination [data-color="executive"] span.current,
+.pagination [data-color="grass"] a.active,
+.pagination [data-color="grass"] a.current,
+.pagination [data-color="grass"] span.active,
+.pagination [data-color="grass"] span.current,
+.pagination [data-color="ocean"] a.active,
+.pagination [data-color="ocean"] a.current,
+.pagination [data-color="ocean"] span.active,
+.pagination [data-color="ocean"] span.current,
+.pagination [data-color="sunrise"] a.active,
+.pagination [data-color="sunrise"] a.current,
+.pagination [data-color="sunrise"] span.active,
+.pagination [data-color="sunrise"] span.current {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
@@ -2684,10 +2704,30 @@ nav,
 #menu-social-links li a:hover,
 #menu-social-links li a:active,
 #menu-social-links li a:focus,
-.pagination a:hover,
-.pagination a:focus,
-.pagination span:hover,
-.pagination span:focus {
+.pagination [data-color="bright"] a:hover,
+.pagination [data-color="bright"] a:focus,
+.pagination [data-color="bright"] span:hover,
+.pagination [data-color="bright"] span:focus,
+.pagination [data-color="chrome"] a:hover,
+.pagination [data-color="chrome"] a:focus,
+.pagination [data-color="chrome"] span:hover,
+.pagination [data-color="chrome"] span:focus,
+.pagination [data-color="executive"] a:hover,
+.pagination [data-color="executive"] a:focus,
+.pagination [data-color="executive"] span:hover,
+.pagination [data-color="executive"] span:focus,
+.pagination [data-color="grass"] a:hover,
+.pagination [data-color="grass"] a:focus,
+.pagination [data-color="grass"] span:hover,
+.pagination [data-color="grass"] span:focus,
+.pagination [data-color="ocean"] a:hover,
+.pagination [data-color="ocean"] a:focus,
+.pagination [data-color="ocean"] span:hover,
+.pagination [data-color="ocean"] span:focus,
+.pagination [data-color="sunrise"] a:hover,
+.pagination [data-color="sunrise"] a:focus,
+.pagination [data-color="sunrise"] span:hover,
+.pagination [data-color="sunrise"] span:focus {
   -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
           box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
@@ -11204,8 +11244,10 @@ strong {
   left: 0;
 }
 
-.pagination a,
-.pagination span {
+.pagination [data-color="bright"] a,
+.pagination [data-color="bright"] span {
+  background: #FF9F1C;
+  border: 2px solid #FF9F1C;
   color: #FFF !important;
   display: inline-block;
   min-width: 40px;
@@ -11216,38 +11258,300 @@ strong {
   text-decoration: none;
 }
 
-.pagination a:hover,
-.pagination a:focus,
-.pagination span:hover,
-.pagination span:focus {
+.pagination [data-color="bright"] a:hover,
+.pagination [data-color="bright"] a:focus,
+.pagination [data-color="bright"] span:hover,
+.pagination [data-color="bright"] span:focus {
+  background: #cf7700;
   color: #FFF;
 }
 
-.pagination a.active,
-.pagination a.current,
-.pagination span.active,
-.pagination span.current {
+.pagination [data-color="bright"] a.active,
+.pagination [data-color="bright"] a.current,
+.pagination [data-color="bright"] span.active,
+.pagination [data-color="bright"] span.current {
+  background: #ffbf69;
   color: #FFF;
 }
 
-html[data-contrast="true"] .pagination a,
-html[data-contrast="true"] .pagination span {
+html[data-contrast="true"] .pagination [data-color="bright"] a,
+html[data-contrast="true"] .pagination [data-color="bright"] span {
   background: #000;
   border-color: #FFF;
 }
 
-html[data-contrast="true"] .pagination a:hover,
-html[data-contrast="true"] .pagination a:focus,
-html[data-contrast="true"] .pagination span:hover,
-html[data-contrast="true"] .pagination span:focus {
+html[data-contrast="true"] .pagination [data-color="bright"] a:hover,
+html[data-contrast="true"] .pagination [data-color="bright"] a:focus,
+html[data-contrast="true"] .pagination [data-color="bright"] span:hover,
+html[data-contrast="true"] .pagination [data-color="bright"] span:focus {
   background: #FFF;
   color: #000 !important;
 }
 
-html[data-contrast="true"] .pagination a.active,
-html[data-contrast="true"] .pagination a.current,
-html[data-contrast="true"] .pagination span.active,
-html[data-contrast="true"] .pagination span.current {
+html[data-contrast="true"] .pagination [data-color="bright"] a.active,
+html[data-contrast="true"] .pagination [data-color="bright"] a.current,
+html[data-contrast="true"] .pagination [data-color="bright"] span.active,
+html[data-contrast="true"] .pagination [data-color="bright"] span.current {
+  background: #66666E;
+  color: #FFF !important;
+}
+
+.pagination [data-color="chrome"] a,
+.pagination [data-color="chrome"] span {
+  background: #000;
+  border: 2px solid #000;
+  color: #FFF !important;
+  display: inline-block;
+  min-width: 40px;
+  padding: 0 15px !important;
+  height: 40px;
+  line-height: 1.7em !important;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.pagination [data-color="chrome"] a:hover,
+.pagination [data-color="chrome"] a:focus,
+.pagination [data-color="chrome"] span:hover,
+.pagination [data-color="chrome"] span:focus {
+  background: black;
+  color: #FFF;
+}
+
+.pagination [data-color="chrome"] a.active,
+.pagination [data-color="chrome"] a.current,
+.pagination [data-color="chrome"] span.active,
+.pagination [data-color="chrome"] span.current {
+  background: #262626;
+  color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="chrome"] a,
+html[data-contrast="true"] .pagination [data-color="chrome"] span {
+  background: #000;
+  border-color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="chrome"] a:hover,
+html[data-contrast="true"] .pagination [data-color="chrome"] a:focus,
+html[data-contrast="true"] .pagination [data-color="chrome"] span:hover,
+html[data-contrast="true"] .pagination [data-color="chrome"] span:focus {
+  background: #FFF;
+  color: #000 !important;
+}
+
+html[data-contrast="true"] .pagination [data-color="chrome"] a.active,
+html[data-contrast="true"] .pagination [data-color="chrome"] a.current,
+html[data-contrast="true"] .pagination [data-color="chrome"] span.active,
+html[data-contrast="true"] .pagination [data-color="chrome"] span.current {
+  background: #66666E;
+  color: #FFF !important;
+}
+
+.pagination [data-color="executive"] a,
+.pagination [data-color="executive"] span {
+  background: #E6AF2E;
+  border: 2px solid #E6AF2E;
+  color: #FFF !important;
+  display: inline-block;
+  min-width: 40px;
+  padding: 0 15px !important;
+  height: 40px;
+  line-height: 1.7em !important;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.pagination [data-color="executive"] a:hover,
+.pagination [data-color="executive"] a:focus,
+.pagination [data-color="executive"] span:hover,
+.pagination [data-color="executive"] span:focus {
+  background: #b28315;
+  color: #FFF;
+}
+
+.pagination [data-color="executive"] a.active,
+.pagination [data-color="executive"] a.current,
+.pagination [data-color="executive"] span.active,
+.pagination [data-color="executive"] span.current {
+  background: #eec972;
+  color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="executive"] a,
+html[data-contrast="true"] .pagination [data-color="executive"] span {
+  background: #000;
+  border-color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="executive"] a:hover,
+html[data-contrast="true"] .pagination [data-color="executive"] a:focus,
+html[data-contrast="true"] .pagination [data-color="executive"] span:hover,
+html[data-contrast="true"] .pagination [data-color="executive"] span:focus {
+  background: #FFF;
+  color: #000 !important;
+}
+
+html[data-contrast="true"] .pagination [data-color="executive"] a.active,
+html[data-contrast="true"] .pagination [data-color="executive"] a.current,
+html[data-contrast="true"] .pagination [data-color="executive"] span.active,
+html[data-contrast="true"] .pagination [data-color="executive"] span.current {
+  background: #66666E;
+  color: #FFF !important;
+}
+
+.pagination [data-color="grass"] a,
+.pagination [data-color="grass"] span {
+  background: #C6DABF;
+  border: 2px solid #C6DABF;
+  color: #FFF !important;
+  display: inline-block;
+  min-width: 40px;
+  padding: 0 15px !important;
+  height: 40px;
+  line-height: 1.7em !important;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.pagination [data-color="grass"] a:hover,
+.pagination [data-color="grass"] a:focus,
+.pagination [data-color="grass"] span:hover,
+.pagination [data-color="grass"] span:focus {
+  background: #9bbe8f;
+  color: #FFF;
+}
+
+.pagination [data-color="grass"] a.active,
+.pagination [data-color="grass"] a.current,
+.pagination [data-color="grass"] span.active,
+.pagination [data-color="grass"] span.current {
+  background: #f1f6ef;
+  color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="grass"] a,
+html[data-contrast="true"] .pagination [data-color="grass"] span {
+  background: #000;
+  border-color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="grass"] a:hover,
+html[data-contrast="true"] .pagination [data-color="grass"] a:focus,
+html[data-contrast="true"] .pagination [data-color="grass"] span:hover,
+html[data-contrast="true"] .pagination [data-color="grass"] span:focus {
+  background: #FFF;
+  color: #000 !important;
+}
+
+html[data-contrast="true"] .pagination [data-color="grass"] a.active,
+html[data-contrast="true"] .pagination [data-color="grass"] a.current,
+html[data-contrast="true"] .pagination [data-color="grass"] span.active,
+html[data-contrast="true"] .pagination [data-color="grass"] span.current {
+  background: #66666E;
+  color: #FFF !important;
+}
+
+.pagination [data-color="ocean"] a,
+.pagination [data-color="ocean"] span {
+  background: #00A8E8;
+  border: 2px solid #00A8E8;
+  color: #FFF !important;
+  display: inline-block;
+  min-width: 40px;
+  padding: 0 15px !important;
+  height: 40px;
+  line-height: 1.7em !important;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.pagination [data-color="ocean"] a:hover,
+.pagination [data-color="ocean"] a:focus,
+.pagination [data-color="ocean"] span:hover,
+.pagination [data-color="ocean"] span:focus {
+  background: #00719c;
+  color: #FFF;
+}
+
+.pagination [data-color="ocean"] a.active,
+.pagination [data-color="ocean"] a.current,
+.pagination [data-color="ocean"] span.active,
+.pagination [data-color="ocean"] span.current {
+  background: #36c7ff;
+  color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="ocean"] a,
+html[data-contrast="true"] .pagination [data-color="ocean"] span {
+  background: #000;
+  border-color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="ocean"] a:hover,
+html[data-contrast="true"] .pagination [data-color="ocean"] a:focus,
+html[data-contrast="true"] .pagination [data-color="ocean"] span:hover,
+html[data-contrast="true"] .pagination [data-color="ocean"] span:focus {
+  background: #FFF;
+  color: #000 !important;
+}
+
+html[data-contrast="true"] .pagination [data-color="ocean"] a.active,
+html[data-contrast="true"] .pagination [data-color="ocean"] a.current,
+html[data-contrast="true"] .pagination [data-color="ocean"] span.active,
+html[data-contrast="true"] .pagination [data-color="ocean"] span.current {
+  background: #66666E;
+  color: #FFF !important;
+}
+
+.pagination [data-color="sunrise"] a,
+.pagination [data-color="sunrise"] span {
+  background: #FFB627;
+  border: 2px solid #FFB627;
+  color: #FFF !important;
+  display: inline-block;
+  min-width: 40px;
+  padding: 0 15px !important;
+  height: 40px;
+  line-height: 1.7em !important;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.pagination [data-color="sunrise"] a:hover,
+.pagination [data-color="sunrise"] a:focus,
+.pagination [data-color="sunrise"] span:hover,
+.pagination [data-color="sunrise"] span:focus {
+  background: #da9000;
+  color: #FFF;
+}
+
+.pagination [data-color="sunrise"] a.active,
+.pagination [data-color="sunrise"] a.current,
+.pagination [data-color="sunrise"] span.active,
+.pagination [data-color="sunrise"] span.current {
+  background: #ffd074;
+  color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="sunrise"] a,
+html[data-contrast="true"] .pagination [data-color="sunrise"] span {
+  background: #000;
+  border-color: #FFF;
+}
+
+html[data-contrast="true"] .pagination [data-color="sunrise"] a:hover,
+html[data-contrast="true"] .pagination [data-color="sunrise"] a:focus,
+html[data-contrast="true"] .pagination [data-color="sunrise"] span:hover,
+html[data-contrast="true"] .pagination [data-color="sunrise"] span:focus {
+  background: #FFF;
+  color: #000 !important;
+}
+
+html[data-contrast="true"] .pagination [data-color="sunrise"] a.active,
+html[data-contrast="true"] .pagination [data-color="sunrise"] a.current,
+html[data-contrast="true"] .pagination [data-color="sunrise"] span.active,
+html[data-contrast="true"] .pagination [data-color="sunrise"] span.current {
   background: #66666E;
   color: #FFF !important;
 }

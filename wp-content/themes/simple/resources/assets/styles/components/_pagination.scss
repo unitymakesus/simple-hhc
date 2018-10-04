@@ -1,3 +1,6 @@
+$themes-list: "bright", "chrome", "executive", "grass", "ocean", "sunrise";
+$color-secondary-list: $color-bright-1, $color-chrome-2, $color-executive-3, $color-grass-1, $color-ocean-2, $color-sunrise-1;
+
 .pagination {
   background: none;
 
@@ -32,44 +35,48 @@
     }
   }
 
-  a, span {
-    // background: $color-green;
-    // border: 2px solid $color-green;
-    color: $color-white !important;
-    display: inline-block;
-    min-width: 40px;
-    padding: 0 15px !important;
-    height: 40px;
-    line-height: 1.7em !important;
-    font-size: 1.2em;
-    text-decoration: none;
-
-    &:hover, &:focus {
-      // background: lighten($color-green, 10%);
-      color: $color-white;
-
-      @extend .z-depth-2;
-    }
-
-    &.active, &.current {
-      // background: $color-green-dark;
-      color: $color-white;
-
-      @extend .z-depth-0;
-    }
-
-    html[data-contrast="true"] & {
-      background: $color-black;
-      border-color: $color-white;
-
-      &:hover, &:focus {
-        background: $color-white;
-        color: $color-black !important;
-      }
-
-      &.active, &.current {
-        background: $color-grey-dark;
+  @for $n from 1 through length($themes-list) {
+    [data-color="#{nth($themes-list, $n)}"] {
+      a, span {
+        background: nth($color-primary-list, $n);
+        border: 2px solid nth($color-primary-list, $n);
         color: $color-white !important;
+        display: inline-block;
+        min-width: 40px;
+        padding: 0 15px !important;
+        height: 40px;
+        line-height: 1.7em !important;
+        font-size: 1.2em;
+        text-decoration: none;
+
+        &:hover, &:focus {
+          background: darken(nth($color-primary-list, $n), 15%);
+          color: $color-white;
+
+          @extend .z-depth-2;
+        }
+
+        &.active, &.current {
+          background: lighten(nth($color-primary-list, $n), 15%);
+          color: $color-white;
+
+          @extend .z-depth-0;
+        }
+
+        html[data-contrast="true"] & {
+          background: $color-black;
+          border-color: $color-white;
+
+          &:hover, &:focus {
+            background: $color-white;
+            color: $color-black !important;
+          }
+
+          &.active, &.current {
+            background: $color-grey-dark;
+            color: $color-white !important;
+          }
+        }
       }
     }
   }
