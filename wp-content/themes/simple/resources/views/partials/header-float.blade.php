@@ -28,7 +28,7 @@
         </a>
       </div>
       @if (!empty($cta_text) && !empty($cta_link))
-        <div class="cta-link absolute-right">
+        <div class="cta-link relative-right">
           @if (!empty($cta_headline))
             <div class="cta-headline">{{ $cta_headline }}</div>
           @endif

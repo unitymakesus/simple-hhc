@@ -13145,6 +13145,39 @@ Router.prototype.loadEvents = function loadEvents () {
         }
       });
     });
+
+    /**
+     * Form label controls
+     */
+    $('.wpcf7-form-control-wrap').children('input[type="text"], input[type="email"], input[type="tel"], textarea').each(function() {
+      // Remove br
+      $(this).parent().prevAll('br').remove();
+
+      // Move label to after field element
+      // $(this).parent().prevAll('label').insertAfter($(this).parent());
+
+      // Set field wrapper to active
+      $(this).on('focus', function() {
+        $(this).parent().prev('label').addClass('active');
+      });
+
+      // Remove field wrapper active state
+      $(this).on('blur', function() {
+        var val = $.trim($(this).val());
+
+        if (!val) {
+          $(this).parent().prev('label').removeClass('active');
+        }
+      });
+    });
+
+    $('.wpcf7-form-control-wrap').find('.has-free-text').each(function() {
+      var $input = $(this).find('input[type="radio"], input[type="checkbox"]');
+
+      $input.on('focus', function() {
+        $input.parent().addClass('active');
+      })
+    });
   },
 });
 

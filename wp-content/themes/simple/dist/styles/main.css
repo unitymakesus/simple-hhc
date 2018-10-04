@@ -10054,6 +10054,11 @@ body {
   right: 0;
 }
 
+.relative-right {
+  position: relative;
+  right: 0;
+}
+
 .relative {
   position: relative;
 }
@@ -10776,6 +10781,30 @@ strong {
 
 .ctct-form-wrapper.ctct-form-wrapper .ctct-form abbr {
   color: #A3320B;
+}
+
+.input-field [data-color="bright"] label:not(.label-icon).active {
+  color: #2E827C;
+}
+
+.input-field [data-color="chrome"] label:not(.label-icon).active {
+  color: #66666E;
+}
+
+.input-field [data-color="executive"] label:not(.label-icon).active {
+  color: #A3320B;
+}
+
+.input-field [data-color="grass"] label:not(.label-icon).active {
+  color: #114B5F;
+}
+
+.input-field [data-color="ocean"] label:not(.label-icon).active {
+  color: #003459;
+}
+
+.input-field [data-color="sunrise"] label:not(.label-icon).active {
+  color: #CC5803;
 }
 
 .social-icons,
