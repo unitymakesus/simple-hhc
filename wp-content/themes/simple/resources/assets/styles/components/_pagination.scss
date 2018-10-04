@@ -35,48 +35,63 @@ $color-secondary-list: $color-bright-1, $color-chrome-2, $color-executive-3, $co
     }
   }
 
-  @for $n from 1 through length($themes-list) {
-    [data-color="#{nth($themes-list, $n)}"] {
-      a, span {
-        background: nth($color-primary-list, $n);
-        border: 2px solid nth($color-primary-list, $n);
+  a, span {
+    color: $color-white !important;
+    display: inline-block;
+    min-width: 40px;
+    padding: 0 15px !important;
+    height: 40px;
+    line-height: 1.7em !important;
+    font-size: 1.2em;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: $color-white;
+
+      @extend .z-depth-2;
+    }
+
+    &.active, &.current {
+      color: $color-white;
+
+      @extend .z-depth-0;
+    }
+
+    html[data-contrast="true"] & {
+      background: $color-black;
+      border-color: $color-white;
+
+      &:hover, &:focus {
+        background: $color-white;
+        color: $color-black !important;
+      }
+
+      &.active, &.current {
+        background: $color-grey-dark;
         color: $color-white !important;
-        display: inline-block;
-        min-width: 40px;
-        padding: 0 15px !important;
-        height: 40px;
-        line-height: 1.7em !important;
-        font-size: 1.2em;
-        text-decoration: none;
+      }
+    }
+  }
+}
 
-        &:hover, &:focus {
-          background: darken(nth($color-primary-list, $n), 15%);
-          color: $color-white;
+@for $n from 1 through length($themes-list) {
+  [data-color="#{nth($themes-list, $n)}"] {
+    .pagination a, .pagination span {
+      background: nth($color-secondary-list, $n);
+      border: 2px solid nth($color-secondary-list, $n);
 
-          @extend .z-depth-2;
-        }
+      &:hover, &:focus {
+        background: darken(nth($color-secondary-list, $n), 15%);
+        color: $color-white;
 
-        &.active, &.current {
-          background: lighten(nth($color-primary-list, $n), 15%);
-          color: $color-white;
+        @extend .z-depth-2;
+      }
 
-          @extend .z-depth-0;
-        }
+      &.active, &.current {
+        background: lighten(nth($color-secondary-list, $n), 15%);
+        color: $color-white;
 
-        html[data-contrast="true"] & {
-          background: $color-black;
-          border-color: $color-white;
-
-          &:hover, &:focus {
-            background: $color-white;
-            color: $color-black !important;
-          }
-
-          &.active, &.current {
-            background: $color-grey-dark;
-            color: $color-white !important;
-          }
-        }
+        @extend .z-depth-0;
       }
     }
   }
